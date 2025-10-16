@@ -1,0 +1,229 @@
+{
+  "navigation": {
+    "home": "Home",
+    "laCasita": "La Casita",
+    "laOlivita": "La Olivita",
+    "activities": "Activities",
+    "contact": "Contact",
+    "menu": "Menu",
+    "closeMenu": "Close menu",
+    "contactEmma": "Contact Emma"
+  },
+  "hero": {
+    "title": "Escape to Nature",
+    "subtitle": "100% self-sufficient finca in the heart of Tarragona. Peace, disconnection, and sustainability.",
+    "cta": "Discover Our Accommodations",
+    "overline": "Casas Rurales Finca Emmita",
+    "contactEmma": "Contact Emma",
+    "contactButton": "Contact Emma",
+    "scroll": "Scroll",
+    "scrollLabel": "Scroll to see more",
+    "quickFacts": {
+      "selfSufficient": "100% Self-Sufficient",
+      "noNeighbors": "No Neighbors",
+      "peaceNature": "Peace & Nature"
+    }
+  },
+  "about": {
+    "intro": "Finca Emmita is 10 mins drive from El Perello and 20 mins from the sea, we are in the middle of a valley, with no neighbours or roads nearby. All you can hear is the sound of silence. The finca is 100% self-sufficient. It is solar powered, we collect rain water and the grey water is recycled to water the vegetable garden and plants. We offer also high speed internet.",
+    "highlight": "IF YOU ARE LOOKING FOR PEACE, QUIET, DISCONNECTION AND ENJOYING MOTHER NATURE, this is the place.",
+    "elPerello": "The nearest village is El Perello, a small town which sits back 5 kilometres from the sea. Because of this it has not been developed as a tourist resort, and maintains a rustic charm. It is only a small town, but has all the facilities, cafe bars, restaurants, shops of all sorts, a small super-market, banks, a laundrette, a pharmacy and clinic, and a tourist office. There are internet facilities, and international newspapers are available at the newsagents. On Saturday morning there is a local market. El Perello is also famous for his local honey."
+  },
+  "features": {
+    "title": "Why Choose Finca Emmita?",
+    "selfSufficient": {
+      "title": "100% Self-Sufficient",
+      "description": "Solar powered, rainwater collection, and grey water recycling"
+    },
+    "peaceQuiet": {
+      "title": "Peace & Quiet",
+      "description": "In the middle of a valley, no neighbours or roads nearby"
+    },
+    "internet": {
+      "title": "High Speed Internet",
+      "description": "Stay connected while enjoying nature"
+    },
+    "petFriendly": {
+      "title": "Pet Friendly",
+      "description": "Pets travel for free"
+    }
+  },
+  "accommodations": {
+    "sectionTitle": "Accommodations",
+    "title": "Choose Your Perfect Retreat",
+    "subtitle": "Both newly built or renovated, designed for comfort while embracing sustainable living",
+    "keyFeatures": "Key Features",
+    "moreFeatures": "more features",
+    "showLess": "Show less",
+    "weekday": "Weekday",
+    "weekend": "Weekend",
+    "highSeason": "High Season",
+    "from": "From",
+    "perNight": "/night",
+    "fromPerNight": "From €{price}/night",
+    "learnMore": "Learn More",
+    "checkAvailability": "Check Availability",
+    "upTo": "Up to",
+    "guests": "guests",
+    "guestsCapital": "Guests",
+    "upToGuests": "Up to {count} Guests",
+    "space": "Space",
+    "cantDecide": "Can't decide which one?",
+    "cantDecideText": "Both accommodations offer unique experiences. Contact Emma for personalized recommendations based on your needs.",
+    "cantDecideDescription": "Both accommodations offer unique experiences. Contact Emma for personalized recommendations based on your needs.",
+    "callEmma": "Call Emma",
+    "whatsappEmma": "WhatsApp Emma",
+    "whatsappMessage": "Hello! I'd like to know more about the accommodations",
+    "laCasita": {
+      "title": "La Casita",
+      "shortDescription": "Newly built log cabin with well-equipped kitchen, living room with sofa bed, and private terrace.",
+      "longDescription": "The Casita is newly built log cabin and offers a well-equipped small kitchen, a living room with a sofa bed and a pellet stove, a separated double bedroom. The bathroom has a large shower. There is a nice terrace with a table and chairs, sunloungers.",
+      "amenities": {
+        "kitchen": "Well-equipped kitchen",
+        "livingRoom": "Living room with sofa bed",
+        "pelletStove": "Pellet stove",
+        "bedroom": "Separated double bedroom",
+        "shower": "Large shower",
+        "terrace": "Private terrace",
+        "tableChairs": "Table and chairs",
+        "sunloungers": "Sunloungers",
+        "wifi": "Free WiFi",
+        "pets": "Pets allowed (free)"
+      }
+    },
+    "laOlivita": {
+      "title": "La Olivita",
+      "shortDescription": "Newly renovated with mezzanine sleeping loft, wood burner, and terrace with BBQ.",
+      "longDescription": "The Olivita is newly renovated and offers a well-equipped small kitchen, a living room with a sofa bed and a wood burner, the mezzanine sleeping loft has a double bed and is accessible by stairs. The bathroom has a large shower and a composting toilet. There is a nice terrace with a table and chairs, sunloungers and BBQ (not used from June to September due fire risks and it is replaced by a plancha)",
+      "amenities": {
+        "kitchen": "Well-equipped kitchen",
+        "livingRoom": "Living room with sofa bed",
+        "woodBurner": "Wood burner",
+        "mezzanine": "Mezzanine sleeping loft (double bed)",
+        "stairs": "Accessible by stairs",
+        "shower": "Large shower",
+        "compostingToilet": "Composting toilet",
+        "terrace": "Private terrace",
+        "bbq": "BBQ / Plancha",
+        "tableChairs": "Table and chairs",
+        "sunloungers": "Sunloungers",
+        "wifi": "Free WiFi",
+        "pets": "Pets allowed (free)"
+      }
+    }
+  },
+  "testimonials": {
+    "title": "What Our Guests Say",
+    "subtitle": "Hear from people who experienced the peace and beauty of Finca Emmita",
+    "sectionTitle": "Guest Reviews",
+    "via": "via",
+    "averageRating": "Average Rating",
+    "guestSatisfaction": "Guest Satisfaction",
+    "wouldRecommend": "Would recommend",
+    "happyGuests": "Happy Guests",
+    "since": "Since 2020",
+    "previous": "Previous testimonial",
+    "next": "Next testimonial"
+  },
+  "host": {
+    "title": "Meet Emma",
+    "subtitle": "Passionate about sustainable living & nature",
+    "sectionTitle": "Your Host",
+    "bio1": "Hello! I'm Emma, and I've been living at Finca Emmita since 2018. After years in the city, I decided to create a space where people could truly disconnect and reconnect with nature.",
+    "bio2": "What started as a personal dream became a reality when I transformed this beautiful valley into a 100% self-sufficient retreat. Every aspect of the finca - from solar panels to rainwater harvesting - reflects my commitment to sustainable living.",
+    "bio3": "I love sharing this peaceful paradise with guests who appreciate the beauty of simplicity, the sound of silence, and the magic of starlit nights without light pollution. Whether you need recommendations for local hiking trails or tips for sustainable living, I'm always happy to help!",
+    "yearsHosting": "Years Hosting",
+    "rating": "Rating",
+    "happyGuests": "Happy Guests",
+    "careAbout": "What I Care About",
+    "sustainability": "Sustainability",
+    "sustainabilityDesc": "100% off-grid living with renewable energy",
+    "hospitality": "Hospitality",
+    "hospitalityDesc": "Making every guest feel at home",
+    "community": "Community",
+    "communityDesc": "Supporting local businesses and culture",
+    "getInTouch": "Get In Touch",
+    "messageEmma": "Message Emma on WhatsApp",
+    "typicallyResponds": "Typically responds within a few hours",
+    "superhost": "Superhost"
+  },
+  "location": {
+    "title": "Perfectly Positioned",
+    "subtitle": "Peaceful valley location with easy access to beaches, mountains, and local villages",
+    "sectionTitle": "Location",
+    "whatsNearby": "What's Nearby",
+    "howToGetHere": "How to Get Here",
+    "fromCity": "From {city}",
+    "elPerello": "El Perello",
+    "elPerelloDesc": "Local village with shops and restaurants",
+    "theSea": "The Sea",
+    "theSeaDesc": "Beautiful beaches and coastal walks",
+    "mountains": "Mountains",
+    "mountainsDesc": "Hiking trails and nature paths",
+    "restaurants": "Local Restaurants",
+    "restaurantsDesc": "Traditional Catalan cuisine",
+    "minutesDrive": "{minutes} minutes drive",
+    "minutesWalk": "{minutes} minutes walk",
+    "gettingHere": "Getting here: We recommend renting a car for maximum flexibility. Detailed directions will be provided upon booking.",
+    "publicTransport": "Public transport options available to El Perello, then taxi to finca",
+    "offGridNote": "True Off-Grid Experience",
+    "offGridDescription": "Located in the middle of a valley with no neighbors in sight. The last 2km is an unpaved road - perfect for disconnecting from the outside world. A 4x4 vehicle is not required, but drive carefully!"
+  },
+  "booking": {
+    "title": "Book Your Stay",
+    "guarantee": "Best price guaranteed",
+    "bestPrice": "Best price guaranteed",
+    "accommodation": "Accommodation",
+    "checkIn": "Check-in",
+    "checkOut": "Check-out",
+    "guests": "Guests",
+    "guest": "Guest",
+    "guestsPlural": "Guests",
+    "from": "From",
+    "perNight": "/night",
+    "nights": "nights",
+    "night": "night",
+    "total": "Total",
+    "bookNow": "Book Now",
+    "book": "Book",
+    "selectDates": "Select Dates",
+    "orContact": "Or contact Emma directly",
+    "checkAvailability": "Check Availability",
+    "whatsappMessage": "Hello Emma! I'm interested in booking {accommodation} from {checkIn} to {checkOut} for {guests} guests ({nights} nights). Total: €{totalPrice}"
+  },
+  "cta": {
+    "title": "Ready for Your Escape?",
+    "subtitle": "Contact Emma to check availability and book your stay"
+  },
+  "footer": {
+    "accommodations": "Finca Emmita",
+    "about": "About",
+    "aboutText": "100% self-sufficient finca in a peaceful valley. Solar powered, rainwater collection. Perfect for disconnection and enjoying nature.",
+    "contact": "Contact",
+    "followUs": "Follow Us",
+    "contactEmma": "Contact Emma",
+    "copyright": "© {year} Finca Emmita",
+    "location": "Location: {distance} from El Perello, {seaDistance} from the sea."
+  },
+  "common": {
+    "readMore": "Read More",
+    "close": "Close",
+    "next": "Next",
+    "previous": "Previous",
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "email": "Email",
+    "phone": "Phone",
+    "message": "Message",
+    "send": "Send",
+    "today": "Today",
+    "brandName": "Finca Emmita",
+    "brandSubtitle": "Casas Rurales"
+  },
+  "whatsapp": {
+    "defaultMessage": "Hello! I would like to get more information about Finca Emmita.",
+    "ariaLabel": "Contact via WhatsApp",
+    "tooltip": "Contact us!"
+  }
+}

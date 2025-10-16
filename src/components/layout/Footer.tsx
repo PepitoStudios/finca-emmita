@@ -1,0 +1,142 @@
+'use client';
+
+import Link from 'next/link';
+import { useTranslations } from 'next-intl';
+import { Phone, Mail, Instagram, Facebook, MapPin } from 'lucide-react';
+import { siteContent } from '@/data/content';
+
+export default function Footer() {
+  const t = useTranslations();
+  return (
+    <footer className="bg-earth-800 text-earth-100">
+      <div className="container mx-auto px-4 py-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {/* Accommodations */}
+          <div>
+            <h3 className="text-lg font-semibold text-white mb-4">
+              {t('footer.accommodations')}
+            </h3>
+            <ul className="space-y-2">
+              <li>
+                <Link href="/" className="hover:text-nature-300 transition-colors text-sm">
+                  {t('navigation.home')}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/la-casita"
+                  className="hover:text-nature-300 transition-colors text-sm"
+                >
+                  {t('navigation.laCasita')}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/la-olivita"
+                  className="hover:text-nature-300 transition-colors text-sm"
+                >
+                  {t('navigation.laOlivita')}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/activities"
+                  className="hover:text-nature-300 transition-colors text-sm"
+                >
+                  {t('navigation.activities')}
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* About */}
+          <div>
+            <h3 className="text-lg font-semibold text-white mb-4">{t('footer.about')}</h3>
+            <p className="text-sm mb-4">
+              {t('footer.aboutText')}
+            </p>
+            <p className="text-sm">
+              {t('footer.location', {
+                distance: siteContent.location.distances.elPerello,
+                seaDistance: siteContent.location.distances.sea
+              })}
+            </p>
+          </div>
+
+          {/* Contact */}
+          <div>
+            <h3 className="text-lg font-semibold text-white mb-4">{t('footer.contact')}</h3>
+            <div className="space-y-3 text-sm">
+              <div className="flex items-center gap-2">
+                <Phone className="w-4 h-4 flex-shrink-0" />
+                <a
+                  href={`tel:${siteContent.contact.phone}`}
+                  className="hover:text-nature-300 transition-colors"
+                >
+                  {siteContent.contact.phone}
+                </a>
+              </div>
+              <div className="flex items-center gap-2">
+                <Mail className="w-4 h-4 flex-shrink-0" />
+                <a
+                  href={`mailto:${siteContent.contact.email}`}
+                  className="hover:text-nature-300 transition-colors"
+                >
+                  {siteContent.contact.email}
+                </a>
+              </div>
+              <div className="flex items-start gap-2">
+                <MapPin className="w-4 h-4 flex-shrink-0 mt-1" />
+                <span>{siteContent.location.region}</span>
+              </div>
+            </div>
+
+            {/* Social Media */}
+            <div className="mt-6">
+              <p className="text-sm font-medium mb-3">{t('footer.followUs')}</p>
+              <div className="flex gap-3">
+                <a
+                  href={siteContent.contact.instagram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-2 bg-earth-700 rounded-full hover:bg-nature-600 transition-colors"
+                  aria-label="Instagram"
+                >
+                  <Instagram className="w-5 h-5" />
+                </a>
+                <a
+                  href={siteContent.contact.facebook}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-2 bg-earth-700 rounded-full hover:bg-nature-600 transition-colors"
+                  aria-label="Facebook"
+                >
+                  <Facebook className="w-5 h-5" />
+                </a>
+              </div>
+            </div>
+
+            {/* Contact Button */}
+            <div className="mt-6">
+              <Link
+                href="/contact"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-nature-600 text-white rounded-lg hover:bg-nature-700 transition-colors text-sm font-medium"
+              >
+                {t('footer.contactEmma')}
+              </Link>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom Bar */}
+        <div className="mt-12 pt-8 border-t border-earth-700">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+            <p className="text-sm text-earth-300">
+              {t('footer.copyright', { year: new Date().getFullYear() })}
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+}

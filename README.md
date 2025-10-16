@@ -1,36 +1,145 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Ecoturismo Villafeliche - Website
 
-## Getting Started
+Sitio web moderno para Ecoturismo Villafeliche, un alojamiento rural ecológico en el Delta del Ebro.
 
-First, run the development server:
+## Stack Tecnológico
+
+- **Frontend**: Next.js 15 (App Router)
+- **Lenguaje**: TypeScript
+- **Estilos**: Tailwind CSS v4
+- **Animaciones**: Framer Motion
+- **Formularios**: React Hook Form + Zod
+- **Iconos**: Lucide React
+- **Hosting**: Vercel (recomendado)
+
+## Características Implementadas ✅
+
+### FASE 1 - Setup Base
+- ✅ Proyecto Next.js 15 con TypeScript
+- ✅ Tailwind CSS v4 con tema personalizado (colores naturales)
+- ✅ ESLint y Prettier configurados
+- ✅ Estructura de carpetas organizada
+- ✅ Dependencias instaladas (Framer Motion, React Hook Form, Lucide)
+
+### Componentes UI Base
+- ✅ Button (múltiples variantes, estados de loading)
+- ✅ Card (con sub-componentes Header, Title, Description, Content, Footer)
+- ✅ Input (con validación y errores)
+
+### Layout Components
+- ✅ Header (sticky con efecto scroll)
+- ✅ Navigation (responsive con dropdown menus)
+- ✅ Footer (multi-columna con enlaces, contacto, redes sociales)
+- ✅ WhatsAppButton (flotante con animaciones)
+
+### Páginas
+- ✅ Home (con Hero, secciones de filosofía, CTAs)
+- ⏳ Alojamientos (pendiente)
+- ⏳ Servicios (pendiente)
+- ⏳ Contacto (pendiente)
+- ⏳ Delta del Ebro (pendiente)
+- ⏳ Retiros de Yoga (pendiente)
+
+## Instalación y Desarrollo
 
 ```bash
+# Instalar dependencias
+npm install
+
+# Ejecutar en desarrollo
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
+# Build para producción
+npm run build
+
+# Iniciar servidor de producción
+npm start
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Abre [http://localhost:3000](http://localhost:3000) en tu navegador para ver el resultado.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Estructura del Proyecto
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+ecoturismo-web/
+├── src/
+│   ├── app/                    # App Router de Next.js
+│   │   ├── layout.tsx         # Layout principal
+│   │   ├── page.tsx           # Home page
+│   │   └── globals.css        # Estilos globales + tema
+│   ├── components/
+│   │   ├── ui/                # Componentes UI base
+│   │   │   ├── Button.tsx
+│   │   │   ├── Card.tsx
+│   │   │   └── Input.tsx
+│   │   ├── layout/            # Componentes de layout
+│   │   │   ├── Header.tsx
+│   │   │   ├── Navigation.tsx
+│   │   │   ├── Footer.tsx
+│   │   │   └── WhatsAppButton.tsx
+│   │   ├── sections/          # Secciones de página
+│   │   │   └── Hero.tsx
+│   │   └── forms/             # Formularios (pendiente)
+│   └── lib/
+│       ├── utils/             # Utilidades
+│       │   └── cn.ts         # Clase merger
+│       └── types/             # TypeScript types
+│           └── index.ts
+├── public/                    # Assets estáticos
+└── package.json
+```
 
-## Learn More
+## Tema de Colores
 
-To learn more about Next.js, take a look at the following resources:
+El sitio usa una paleta natural inspirada en el ecosistema del Delta del Ebro:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Earth** (tonos tierra): Marrones cálidos (#9d7a58, etc.)
+- **Nature** (tonos verdes): Verdes naturales (#4a9456, etc.)
+- **Sage** (tonos salvia): Verde-gris suave (#6d8869, etc.)
+- **Accent** (acento): Dorado/caramelo (#c89465)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Todos los colores están disponibles en Tailwind con escalas de 50-900.
 
-## Deploy on Vercel
+## Próximos Pasos
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. **Páginas de Alojamientos**
+   - Suite Premium
+   - Yurta Mongola
+   - Observatorio Ornitológico
+   - Habitación Doble
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+2. **Componentes Adicionales**
+   - ImageGallery con lightbox
+   - TestimonialSlider
+   - ServiceCard
+   - AccommodationCard
+   - ContactForm
+   - BookingForm
+
+3. **Funcionalidades**
+   - Sistema de reservas
+   - Integración con email (Resend)
+   - Google Maps
+   - Galería de imágenes
+   - Blog sobre Delta del Ebro
+
+4. **Optimizaciones**
+   - Image optimization
+   - SEO (structured data)
+   - Performance (Lighthouse 90+)
+   - Accessibility audit
+
+5. **CMS Integration** (Fase posterior)
+   - Sanity CMS setup
+   - Schemas para contenido
+
+## Deploy en Vercel
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new)
+
+Este proyecto está optimizado para [Vercel Platform](https://vercel.com).
+
+---
+
+**Ecoturismo Villafeliche**
+Teléfono: (+34) 606 39 64 32 | Licencia: PTE-000304

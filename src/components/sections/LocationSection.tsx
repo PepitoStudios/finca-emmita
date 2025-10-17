@@ -35,7 +35,7 @@ export default function LocationSection() {
     },
     {
       name: t('restaurants'),
-      distance: '10-15 ' + t('minutesDrive', { minutes: '' }).toLowerCase(),
+      distance: t('restaurantsDistance'),
       icon: Utensils,
       description: t('restaurantsDesc'),
       color: 'text-accent-600',
@@ -46,17 +46,17 @@ export default function LocationSection() {
   const directions = [
     {
       from: 'Barcelona',
-      time: '2 hours',
+      time: t('directions.barcelona'),
       icon: Car,
     },
     {
       from: 'Valencia',
-      time: '1.5 hours',
+      time: t('directions.valencia'),
       icon: Car,
     },
     {
       from: 'Tarragona',
-      time: '45 minutes',
+      time: t('directions.tarragona'),
       icon: Car,
     },
   ];

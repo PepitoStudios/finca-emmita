@@ -120,33 +120,17 @@ These IDs are the anchors for all hash-based navigation.
 
 ## Translation Keys
 
-Navigation uses next-intl for i18n:
+Navigation uses next-intl for i18n. Translation keys are stored in `/messages/en.json` and `/messages/es.json`.
 
-**English** (`messages/en.json`):
-```json
-"navigation": {
-  "home": "Home",
-  "accommodations": "Accommodations",
-  "location": "Location",
-  "contact": "Contact",
-  "menu": "Menu",
-  "closeMenu": "Close menu",
-  "contactEmma": "Contact Emma"
-}
-```
+**Navigation namespace** contains all navigation-related text:
+- `home`, `accommodations`, `location`, `contact` - Main navigation links
+- `menu`, `closeMenu` - Mobile menu controls
+- `contactEmma` - Contact CTA
 
-**Spanish** (`messages/es.json`):
-```json
-"navigation": {
-  "home": "Inicio",
-  "accommodations": "Alojamientos",
-  "location": "Ubicación",
-  "contact": "Contacto",
-  "menu": "Menú",
-  "closeMenu": "Cerrar menú",
-  "contactEmma": "Contactar con Emma"
-}
-```
+**Language switcher** uses the `language` namespace:
+- `language.active` - "Active" badge shown on currently selected language
+
+For comprehensive i18n documentation, see `/src/i18n/CLAUDE.md`.
 
 ## Technical Patterns
 

@@ -109,6 +109,22 @@
         "wifi": "WiFi gratis",
         "pets": "Mascotas permitidas (gratis)"
       }
+    },
+    "casaLuna": {
+      "title": "Casa Luna",
+      "shortDescription": "Casa ecológica de madera con 2 habitaciones, 2 baños, piscina compartida y vistas impresionantes del valle.",
+      "longDescription": "Casa Luna es un refugio tranquilo enclavado entre valles y montañas. Esta casa ecológica de madera, construida hace 20 años, es completamente autosuficiente con energía solar y recolección de agua de lluvia. Con 2 habitaciones y 2 baños, puede alojar hasta 4 huéspedes. Disfruta de la piscina compartida (junio-septiembre), terraza exterior con parrilla, y la compañía de animales residentes amigables. Ubicada a 10 minutos de El Perelló y 20 minutos del mar, accesible por un pintoresco camino de tierra.",
+      "amenities": {
+        "bedrooms": "2 habitaciones",
+        "bathrooms": "2 baños (uno con inodoro de compostaje)",
+        "kitchen": "Cocina bien equipada",
+        "fireplace": "Chimenea",
+        "terrace": "Terraza exterior",
+        "grill": "Parrilla",
+        "wifi": "WiFi de alta velocidad",
+        "childFriendly": "Apto para niños (mini-cuna disponible)",
+        "pets": "Mascotas permitidas (gratis)"
+      }
     }
   },
   "testimonials": {
@@ -122,7 +138,33 @@
     "happyGuests": "Huéspedes Felices",
     "since": "Desde 2020",
     "previous": "Testimonio anterior",
-    "next": "Siguiente testimonio"
+    "next": "Siguiente testimonio",
+    "items": [
+      {
+        "author": "Sarah & James",
+        "content": "Nuestra estadía en La Casita fue absolutamente mágica. La paz y la tranquilidad era exactamente lo que necesitábamos. Despertar con el canto de los pájaros y sin ruido de tráfico fue increíble. Emma es una anfitriona maravillosa que nos hizo sentir muy bienvenidos. La autosuficiencia de la finca es impresionante - energía solar, recolección de agua de lluvia - se sintió bien estar en un lugar tan ecológico."
+      },
+      {
+        "author": "Marie",
+        "content": "¡El lugar perfecto para una desintoxicación digital! La Olivita es encantadora y acogedora. La estufa de leña nos mantuvo calientes por las noches. Pasamos nuestros días caminando por el valle y nuestras noches mirando las estrellas - ¡sin contaminación lumínica en absoluto! Emma nos dio excelentes recomendaciones de lugares locales. Definitivamente volveremos."
+      },
+      {
+        "author": "Tom & Lisa",
+        "content": "¡Qué experiencia tan única! Estar completamente fuera de la red pero aún tener todas las comodidades fue increíble. A los niños les encantó explorar la tierra y a nosotros nos encantó la paz. Internet de alta velocidad significó que aún podía trabajar de forma remota durante unas horas. Emma es increíblemente conocedora de la vida sostenible."
+      },
+      {
+        "author": "Carlos",
+        "content": "Un lugar increíble para desconectar. La finca está en medio de un valle precioso, sin vecinos a la vista. Emma es muy atenta y te hace sentir como en casa. La Casita tiene todo lo necesario y más. Volveremos seguro."
+      },
+      {
+        "author": "Anna & Peter",
+        "content": "Estábamos buscando un lugar verdaderamente tranquilo y Finca Emmita superó nuestras expectativas. ¡El sonido de la nada es hermoso! La Olivita está bellamente renovada y el inodoro de compostaje es realmente agradable. La pasión de Emma por la sostenibilidad es inspiradora."
+      },
+      {
+        "author": "Julia",
+        "content": "El mejor alquiler vacacional que hemos tenido. La ubicación es impresionante - montañas, valles, y a solo 20 minutos del mar. Emma es la anfitriona perfecta - servicial pero te da privacidad. La instalación solar es impresionante y funcionó perfectamente incluso en días nublados."
+      }
+    ]
   },
   "host": {
     "title": "Conoce a Emma",
@@ -166,7 +208,13 @@
     "gettingHere": "Cómo llegar: Recomendamos alquilar un coche para máxima flexibilidad. Se proporcionarán indicaciones detalladas al reservar.",
     "publicTransport": "Opciones de transporte público disponibles hasta El Perello, luego taxi a la finca",
     "offGridNote": "Experiencia Verdaderamente Fuera de la Red",
-    "offGridDescription": "Ubicada en medio de un valle sin vecinos a la vista. Los últimos 2km son de camino sin asfaltar - perfecto para desconectar del mundo exterior. No se requiere un vehículo 4x4, ¡pero conduce con cuidado!"
+    "offGridDescription": "Ubicada en medio de un valle sin vecinos a la vista. Los últimos 2km son de camino sin asfaltar - perfecto para desconectar del mundo exterior. No se requiere un vehículo 4x4, ¡pero conduce con cuidado!",
+    "directions": {
+      "barcelona": "2 horas",
+      "valencia": "1.5 horas",
+      "tarragona": "45 minutos"
+    },
+    "restaurantsDistance": "10-15 minutos en coche"
   },
   "booking": {
     "title": "Reserva Tu Estancia",
@@ -224,5 +272,8 @@
     "defaultMessage": "¡Hola! Me gustaría obtener más información sobre Finca Emmita.",
     "ariaLabel": "Contactar por WhatsApp",
     "tooltip": "¡Contáctanos!"
+  },
+  "language": {
+    "active": "Activo"
   }
 }

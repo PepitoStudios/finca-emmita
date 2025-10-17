@@ -4,10 +4,13 @@ import { useState, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Star, Quote } from 'lucide-react';
-import { featuredTestimonials } from '@/data/testimonials';
 
 export default function TestimonialsSection() {
   const t = useTranslations('testimonials');
+
+  // Get testimonials from translations
+  const testimonials = t.raw('items') as Array<{ author: string; content: string }>;
+
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(0);
 
@@ -21,13 +24,13 @@ export default function TestimonialsSection() {
 
   const nextTestimonial = () => {
     setDirection(1);
-    setCurrentIndex((prev) => (prev + 1) % featuredTestimonials.length);
+    setCurrentIndex((prev) => (prev + 1) % testimonials.length);
   };
 
   const prevTestimonial = () => {
     setDirection(-1);
     setCurrentIndex((prev) =>
-      prev === 0 ? featuredTestimonials.length - 1 : prev - 1
+      prev === 0 ? testimonials.length - 1 : prev - 1
     );
   };
 
@@ -99,7 +102,7 @@ export default function TestimonialsSection() {
                 >
                   {/* Rating Stars */}
                   <div className="flex justify-center gap-1 mb-6">
-                    {[...Array(featuredTestimonials[currentIndex].rating)].map((_, i) => (
+                    {[...Array(5)].map((_, i) => (
                       <Star
                         key={i}
                         className="w-6 h-6 text-accent fill-accent"
@@ -110,15 +113,15 @@ export default function TestimonialsSection() {
                   {/* Testimonial Text */}
                   <blockquote className="text-center">
                     <p className="text-lg md:text-xl lg:text-2xl text-earth-700 leading-relaxed mb-8 italic">
-                      &ldquo;{featuredTestimonials[currentIndex].content}&rdquo;
+                      &ldquo;{testimonials[currentIndex].content}&rdquo;
                     </p>
                     <footer>
                       <cite className="not-italic">
                         <p className="text-xl font-bold text-earth-900 mb-1">
-                          {featuredTestimonials[currentIndex].author}
+                          {testimonials[currentIndex].author}
                         </p>
                         <p className="text-sm text-earth-500">
-                          {t('via')} {featuredTestimonials[currentIndex].source}
+                          {t('via')} Booking.com
                         </p>
                       </cite>
                     </footer>
@@ -145,7 +148,7 @@ export default function TestimonialsSection() {
 
             {/* Dots Indicator */}
             <div className="flex justify-center gap-2 pb-8">
-              {featuredTestimonials.map((_, index) => (
+              {testimonials.map((_, index) => (
                 <button
                   key={index}
                   onClick={() => goToTestimonial(index)}

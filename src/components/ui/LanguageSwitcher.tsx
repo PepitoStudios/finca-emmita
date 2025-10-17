@@ -1,6 +1,6 @@
 'use client';
 
-import { useLocale } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { useRouter } from 'next/navigation';
 import { Globe } from 'lucide-react';
 import { useState, useTransition } from 'react';
@@ -16,6 +16,7 @@ const languages = [
 export default function LanguageSwitcher({ isMobile = false }: { isMobile?: boolean }) {
   const locale = useLocale();
   const router = useRouter();
+  const t = useTranslations('language');
   const [isOpen, setIsOpen] = useState(false);
   const [isPending, startTransition] = useTransition();
 
@@ -46,7 +47,7 @@ export default function LanguageSwitcher({ isMobile = false }: { isMobile?: bool
             <span className="text-2xl">{lang.flag}</span>
             <span className="font-medium text-lg">{lang.name}</span>
             {lang.code === locale && (
-              <span className="ml-auto text-xs bg-white/20 px-2 py-1 rounded">Active</span>
+              <span className="ml-auto text-xs bg-white/20 px-2 py-1 rounded">{t('active')}</span>
             )}
             {isPending && lang.code !== locale && (
               <span className="ml-auto animate-spin">⏳</span>

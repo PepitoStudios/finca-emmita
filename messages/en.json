@@ -109,6 +109,22 @@
         "wifi": "Free WiFi",
         "pets": "Pets allowed (free)"
       }
+    },
+    "casaLuna": {
+      "title": "Casa Luna",
+      "shortDescription": "Eco-friendly wooden house with 2 bedrooms, 2 bathrooms, shared pool, and stunning valley views.",
+      "longDescription": "Casa Luna is a peaceful retreat nestled between valleys and mountains. This eco-friendly wooden house, built 20 years ago, is completely self-sufficient with solar energy and rainwater collection. With 2 bedrooms and 2 bathrooms, it can accommodate up to 4 guests. Enjoy the shared pool (June-September), outdoor terrace with grill, and the company of friendly resident animals. Located 10 minutes from El Perelló and 20 minutes from the sea, accessible via a scenic dirt road.",
+      "amenities": {
+        "bedrooms": "2 bedrooms",
+        "bathrooms": "2 bathrooms (one with composting toilet)",
+        "kitchen": "Well-equipped kitchen",
+        "fireplace": "Fireplace",
+        "terrace": "Outdoor terrace",
+        "grill": "Grill",
+        "wifi": "High-speed WiFi",
+        "childFriendly": "Child-friendly (mini-crib available)",
+        "pets": "Pets allowed (free)"
+      }
     }
   },
   "testimonials": {
@@ -122,7 +138,33 @@
     "happyGuests": "Happy Guests",
     "since": "Since 2020",
     "previous": "Previous testimonial",
-    "next": "Next testimonial"
+    "next": "Next testimonial",
+    "items": [
+      {
+        "author": "Sarah & James",
+        "content": "Our stay at La Casita was absolutely magical. The peace and quiet was exactly what we needed. Waking up to birdsong and no traffic noise was incredible. Emma is a wonderful host who made us feel so welcome. The self-sufficiency of the finca is impressive - solar power, rainwater collection - it felt good to stay somewhere so eco-friendly."
+      },
+      {
+        "author": "Marie",
+        "content": "Perfect spot for a digital detox! La Olivita is charming and cozy. The wood burner kept us warm in the evenings. We spent our days hiking in the valley and our nights stargazing - no light pollution at all! Emma gave us great recommendations for local spots. Will definitely come back."
+      },
+      {
+        "author": "Tom & Lisa",
+        "content": "What a unique experience! Being completely off-grid but still having all the comforts was amazing. The kids loved exploring the land and we loved the peace. High-speed internet meant I could still work remotely for a few hours. Emma is incredibly knowledgeable about sustainable living."
+      },
+      {
+        "author": "Carlos",
+        "content": "An incredible place to disconnect. The finca is in the middle of a beautiful valley, with no neighbors in sight. Emma is very attentive and makes you feel at home. La Casita has everything you need and more. We will definitely be back."
+      },
+      {
+        "author": "Anna & Peter",
+        "content": "We were looking for somewhere truly peaceful and Finca Emmita exceeded our expectations. The sound of nothing is beautiful! La Olivita is beautifully renovated and the composting toilet is actually really nice. Emma's passion for sustainability is inspiring."
+      },
+      {
+        "author": "Julia",
+        "content": "Best vacation rental we've ever had. The location is stunning - mountains, valleys, and just 20 minutes from the sea. Emma is the perfect host - helpful but gives you privacy. The solar setup is impressive and worked perfectly even on cloudy days."
+      }
+    ]
   },
   "host": {
     "title": "Meet Emma",
@@ -166,7 +208,13 @@
     "gettingHere": "Getting here: We recommend renting a car for maximum flexibility. Detailed directions will be provided upon booking.",
     "publicTransport": "Public transport options available to El Perello, then taxi to finca",
     "offGridNote": "True Off-Grid Experience",
-    "offGridDescription": "Located in the middle of a valley with no neighbors in sight. The last 2km is an unpaved road - perfect for disconnecting from the outside world. A 4x4 vehicle is not required, but drive carefully!"
+    "offGridDescription": "Located in the middle of a valley with no neighbors in sight. The last 2km is an unpaved road - perfect for disconnecting from the outside world. A 4x4 vehicle is not required, but drive carefully!",
+    "directions": {
+      "barcelona": "2 hours",
+      "valencia": "1.5 hours",
+      "tarragona": "45 minutes"
+    },
+    "restaurantsDistance": "10-15 minutes drive"
   },
   "booking": {
     "title": "Book Your Stay",
@@ -224,5 +272,8 @@
     "defaultMessage": "Hello! I would like to get more information about Finca Emmita.",
     "ariaLabel": "Contact via WhatsApp",
     "tooltip": "Contact us!"
+  },
+  "language": {
+    "active": "Active"
   }
 }

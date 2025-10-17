@@ -10,6 +10,7 @@ Sitio web moderno para Ecoturismo Villafeliche, un alojamiento rural ecológico 
 - **Animaciones**: Framer Motion
 - **Formularios**: React Hook Form + Zod
 - **Iconos**: Lucide React
+- **i18n**: next-intl v4.3.12 (English/Spanish)
 - **Hosting**: Vercel (recomendado)
 
 ## Características Implementadas ✅
@@ -31,6 +32,7 @@ Sitio web moderno para Ecoturismo Villafeliche, un alojamiento rural ecológico 
 - ✅ Navigation (hash-based con smooth scroll, Intersection Observer, responsive mobile menu)
 - ✅ Footer (multi-columna con enlaces hash, contacto, redes sociales)
 - ✅ WhatsAppButton (flotante con animaciones)
+- ✅ LanguageSwitcher (desktop/mobile, cookie-based locale storage)
 
 ### Arquitectura de Navegación
 - ✅ Single-page application con secciones (#hero, #accommodations, #location, #contact)
@@ -75,20 +77,35 @@ ecoturismo-web/
 │   │   ├── ui/                # Componentes UI base
 │   │   │   ├── Button.tsx
 │   │   │   ├── Card.tsx
-│   │   │   └── Input.tsx
+│   │   │   ├── Input.tsx
+│   │   │   ├── LanguageSwitcher.tsx
+│   │   │   └── AccommodationCard.tsx
 │   │   ├── layout/            # Componentes de layout
 │   │   │   ├── Header.tsx
 │   │   │   ├── Navigation.tsx
 │   │   │   ├── Footer.tsx
 │   │   │   └── WhatsAppButton.tsx
 │   │   ├── sections/          # Secciones de página
-│   │   │   └── Hero.tsx
+│   │   │   ├── Hero.tsx
+│   │   │   ├── TestimonialsSection.tsx
+│   │   │   └── LocationSection.tsx
 │   │   └── forms/             # Formularios (pendiente)
+│   ├── i18n/                  # Internationalization
+│   │   ├── config.ts          # Locale configuration
+│   │   ├── locale.ts          # Server actions
+│   │   └── CLAUDE.md          # i18n documentation
+│   ├── data/                  # Data files
+│   │   ├── accommodations.ts  # Accommodation data
+│   │   ├── testimonials.ts    # Testimonials data
+│   │   └── content.ts         # Site content
 │   └── lib/
 │       ├── utils/             # Utilidades
 │       │   └── cn.ts         # Clase merger
 │       └── types/             # TypeScript types
 │           └── index.ts
+├── messages/                  # Translation files
+│   ├── en.json               # English translations
+│   └── es.json               # Spanish translations
 ├── public/                    # Assets estáticos
 └── package.json
 ```
@@ -152,6 +169,38 @@ Este proyecto implementa una arquitectura de **single-page application (SPA)** c
 - **Animation**: Framer Motion para active indicators y mobile menu transitions
 
 Referencia de archivos modificados en tarea `m-refactor-remove-page-sections.md`
+
+## Sistema de Internacionalización (i18n)
+
+Este proyecto es completamente bilingüe (English/Spanish) usando **next-intl**:
+
+### Características
+
+- **Cookie-based locale selection**: La preferencia de idioma se guarda en cookie `NEXT_LOCALE`
+- **Browser language detection**: Detecta automáticamente el idioma del navegador
+- **Translation files**: `/messages/en.json` y `/messages/es.json` con estructura jerárquica
+- **Component patterns**:
+  - `useTranslations()` para client components
+  - `getTranslations()` para server components
+  - `t.raw()` para objetos complejos (arrays, nested objects)
+- **Dynamic key lookup**: Helper `idToTranslationKey()` para contenido dinámico
+- **Data separation**: Contenido traducible en `/messages`, datos agnósticos en `/src/data`
+
+### Patrones Implementados
+
+**AccommodationCard**: Usa `t.raw()` para amenities y `idToTranslationKey()` para lookup dinámico
+**TestimonialsSection**: Array de testimonios completo en translation files
+**LocationSection**: Tiempos de viaje e información de ubicación traducida
+**LanguageSwitcher**: Badge "Active"/"Activo" usando `t('language.active')`
+
+### Documentación Completa
+
+Ver `/src/i18n/CLAUDE.md` para documentación detallada del sistema i18n, incluyendo:
+- Arquitectura y flujo de detección de locale
+- Estructura de archivos de traducción
+- Patrones de implementación por tipo de componente
+- Estrategia de separación de datos
+- Mejores prácticas y limitaciones conocidas
 
 ## Próximos Pasos
 

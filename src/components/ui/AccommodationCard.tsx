@@ -27,12 +27,24 @@ const fadeInRight = {
   transition: { duration: 0.7 },
 };
 
+// Helper to convert accommodation id to translation key (la-casita -> laCasita)
+function idToTranslationKey(id: string): string {
+  return id.replace(/-([a-z])/g, (_, letter) => letter.toUpperCase());
+}
+
 export default function AccommodationCard({ accommodation, index }: AccommodationCardProps) {
   const t = useTranslations('accommodations');
   const [showAllAmenities, setShowAllAmenities] = useState(false);
   const isEven = index % 2 === 0;
   const imageAnimation = isEven ? fadeInLeft : fadeInRight;
   const contentAnimation = isEven ? fadeInRight : fadeInLeft;
+
+  // Get translation key for this accommodation
+  const accommodationKey = idToTranslationKey(accommodation.id);
+
+  // Get amenities from translations as an array
+  const amenitiesObj = t.raw(`${accommodationKey}.amenities`) as Record<string, string>;
+  const amenities = Object.values(amenitiesObj);
 
   return (
     <div
@@ -101,10 +113,10 @@ export default function AccommodationCard({ accommodation, index }: Accommodatio
         {/* Title */}
         <div>
           <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold text-earth-900 mb-3">
-            {accommodation.title}
+            {t(`${accommodationKey}.title`)}
           </h3>
           <p className="text-lg md:text-xl text-earth-600 leading-relaxed">
-            {accommodation.shortDescription}
+            {t(`${accommodationKey}.shortDescription`)}
           </p>
         </div>
 
@@ -126,7 +138,7 @@ export default function AccommodationCard({ accommodation, index }: Accommodatio
 
         {/* Description */}
         <p className="text-earth-600 leading-relaxed">
-          {accommodation.longDescription}
+          {t(`${accommodationKey}.longDescription`)}
         </p>
 
         {/* Amenities */}
@@ -135,14 +147,14 @@ export default function AccommodationCard({ accommodation, index }: Accommodatio
             {t('keyFeatures')}
           </h4>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            {(showAllAmenities ? accommodation.amenities : accommodation.amenities.slice(0, 6)).map((amenity, idx) => (
+            {(showAllAmenities ? amenities : amenities.slice(0, 6)).map((amenity, idx) => (
               <div key={idx} className="flex items-start gap-2">
                 <Check className="w-5 h-5 text-nature-600 flex-shrink-0 mt-0.5" />
                 <span className="text-earth-700 text-sm">{amenity}</span>
               </div>
             ))}
           </div>
-          {accommodation.amenities.length > 6 && (
+          {amenities.length > 6 && (
             <button
               onClick={() => setShowAllAmenities(!showAllAmenities)}
               className="flex items-center gap-2 text-sm text-nature-600 hover:text-nature-700 font-medium mt-3 transition-colors"
@@ -155,7 +167,7 @@ export default function AccommodationCard({ accommodation, index }: Accommodatio
               ) : (
                 <>
                   <ChevronDown className="w-4 h-4" />
-                  <span>+ {accommodation.amenities.length - 6} {t('moreFeatures')}</span>
+                  <span>+ {amenities.length - 6} {t('moreFeatures')}</span>
                 </>
               )}
             </button>

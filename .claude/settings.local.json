@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(sessions/bin/sessions kickstart:*)",
+      "Bash(sessions config phrases list implementation_mode)",
+      "Bash(sessions/bin/sessions config phrases list implementation_mode)",
+      "Bash(sessions/bin/sessions config phrases list discussion_mode)",
+      "Bash(sessions/bin/sessions config phrases list task_creation)",
+      "Bash(cat:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(sessions/bin/sessions config phrases list task_startup)",
+      "Bash(sessions/bin/sessions:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

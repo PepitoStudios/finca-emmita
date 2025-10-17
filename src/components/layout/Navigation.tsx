@@ -10,18 +10,47 @@ import { cn } from '@/lib/utils/cn';
 import { siteContent } from '@/data/content';
 import LanguageSwitcher from '@/components/ui/LanguageSwitcher';
 
-export default function Navigation() {
+interface NavigationProps {
+  isScrolled: boolean;
+}
+
+export default function Navigation({ isScrolled }: NavigationProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState(() => {
+    if (typeof window !== 'undefined') {
+      const hash = window.location.hash.slice(1);
+      return hash || 'hero';
+    }
+    return 'hero';
+  });
   const pathname = usePathname();
   const t = useTranslations('navigation');
 
   const navigationItems = [
-    { name: t('home'), href: '/' },
-    { name: t('laCasita'), href: '/la-casita' },
-    { name: t('laOlivita'), href: '/la-olivita' },
-    { name: t('activities'), href: '/activities' },
-    { name: t('contact'), href: '/contact', highlight: true },
+    { name: t('home'), href: '#hero' },
+    { name: t('accommodations'), href: '#accommodations' },
+    { name: t('location'), href: '#location' },
+    { name: t('contact'), href: '#contact' },
   ];
+
+  // Smooth scroll handler
+  const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    const element = document.querySelector(href);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+      window.history.pushState(null, '', href);
+
+      // Focus management for accessibility
+      const targetElement = element as HTMLElement;
+      targetElement.setAttribute('tabindex', '-1');
+      targetElement.focus();
+
+      setMobileMenuOpen(false);
+    } else if (process.env.NODE_ENV === 'development') {
+      console.error(`Section ${href} not found`);
+    }
+  };
 
   // Prevent scroll when mobile menu is open
   useEffect(() => {
@@ -35,39 +64,68 @@ export default function Navigation() {
     };
   }, [mobileMenuOpen]);
 
-  // Close menu on route change
+  // Intersection Observer for active section detection
   useEffect(() => {
-    setMobileMenuOpen(false);
-  }, [pathname]);
+    const observerOptions = {
+      root: null,
+      rootMargin: '-50% 0px -50% 0px',
+      threshold: 0
+    };
+
+    const observerCallback = (entries: IntersectionObserverEntry[]) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveSection(entry.target.id);
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+    // Observe all sections
+    const sections = document.querySelectorAll('section[id]');
+    sections.forEach((section) => observer.observe(section));
+
+    return () => {
+      sections.forEach((section) => observer.unobserve(section));
+      observer.disconnect();
+    };
+  }, []);
 
   return (
     <nav className="relative z-50">
       {/* Desktop Navigation */}
       <div className="hidden lg:flex items-center justify-center space-x-2">
         {navigationItems.map((item) => {
-          const isActive = pathname === item.href;
+          const isActive = activeSection === item.href.replace('#', '');
           return (
-            <Link
+            <a
               key={item.name}
               href={item.href}
+              onClick={(e) => scrollToSection(e, item.href)}
               className={cn(
                 'relative px-5 py-2.5 text-sm font-medium transition-all duration-300 rounded-lg',
-                item.highlight
-                  ? 'bg-nature-600 text-white hover:bg-nature-700 shadow-md hover:shadow-lg hover:scale-105'
-                  : isActive
-                  ? 'text-nature-700 bg-nature-50'
-                  : 'text-earth-700 hover:text-nature-600 hover:bg-earth-50'
+                isActive
+                  ? isScrolled
+                    ? 'text-nature-700 bg-nature-50'
+                    : 'text-white bg-white/10'
+                  : isScrolled
+                  ? 'text-earth-700 hover:text-nature-600 hover:bg-earth-50'
+                  : 'text-white hover:text-earth-100 hover:bg-white/10'
               )}
             >
               {item.name}
-              {isActive && !item.highlight && (
+              {isActive && (
                 <motion.div
                   layoutId="activeTab"
-                  className="absolute bottom-0 left-0 right-0 h-0.5 bg-nature-600"
+                  className={cn(
+                    'absolute bottom-0 left-0 right-0 h-0.5',
+                    isScrolled ? 'bg-nature-600' : 'bg-white'
+                  )}
                   transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                 />
               )}
-            </Link>
+            </a>
           );
         })}
         <LanguageSwitcher />
@@ -77,7 +135,12 @@ export default function Navigation() {
       <div className="lg:hidden">
         <button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="p-3 text-earth-700 hover:bg-earth-50 rounded-xl transition-all active:scale-95"
+          className={cn(
+            'p-3 rounded-xl transition-all active:scale-95',
+            isScrolled
+              ? 'text-earth-700 hover:bg-earth-50'
+              : 'text-white hover:bg-white/10'
+          )}
           aria-label={mobileMenuOpen ? t('closeMenu') : t('menu')}
           aria-expanded={mobileMenuOpen}
         >
@@ -130,7 +193,7 @@ export default function Navigation() {
               {/* Navigation Links - Large Touch Targets */}
               <div className="flex-1 overflow-y-auto py-6">
                 {navigationItems.map((item, index) => {
-                  const isActive = pathname === item.href;
+                  const isActive = activeSection === item.href.replace('#', '');
                   return (
                     <motion.div
                       key={item.name}
@@ -138,20 +201,18 @@ export default function Navigation() {
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: index * 0.1 }}
                     >
-                      <Link
+                      <a
                         href={item.href}
+                        onClick={(e) => scrollToSection(e, item.href)}
                         className={cn(
                           'block mx-4 my-2 px-6 py-4 text-lg font-medium rounded-xl transition-all active:scale-98',
-                          item.highlight
-                            ? 'bg-nature-600 text-white shadow-md active:shadow-lg'
-                            : isActive
+                          isActive
                             ? 'bg-nature-50 text-nature-700'
                             : 'text-earth-700 hover:bg-earth-50'
                         )}
-                        onClick={() => setMobileMenuOpen(false)}
                       >
                         {item.name}
-                      </Link>
+                      </a>
                     </motion.div>
                   );
                 })}

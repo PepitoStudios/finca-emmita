@@ -21,17 +21,19 @@ export default function Home() {
   return (
     <div>
       {/* Hero Section */}
-      <Hero
-        title={t('hero.title')}
-        subtitle={t('hero.subtitle')}
-        ctaText={t('hero.cta')}
-        images={heroImages}
-        quickFacts={[
-          t('hero.quickFacts.selfSufficient'),
-          t('hero.quickFacts.noNeighbors'),
-          t('hero.quickFacts.peaceNature')
-        ]}
-      />
+      <section id="hero">
+        <Hero
+          title={t('hero.title')}
+          subtitle={t('hero.subtitle')}
+          ctaText={t('hero.cta')}
+          images={heroImages}
+          quickFacts={[
+            t('hero.quickFacts.selfSufficient'),
+            t('hero.quickFacts.noNeighbors'),
+            t('hero.quickFacts.peaceNature')
+          ]}
+        />
+      </section>
 
       {/* Welcome */}
       <section id="content" className="py-20 bg-earth-50">
@@ -105,7 +107,9 @@ export default function Home() {
       </section>
 
       {/* Accommodations */}
-      <AccommodationsShowcase />
+      <section id="accommodations">
+        <AccommodationsShowcase />
+      </section>
 
       {/* Testimonials */}
       <TestimonialsSection />
@@ -114,10 +118,12 @@ export default function Home() {
       <HostProfile />
 
       {/* Location */}
-      <LocationSection />
+      <section id="location">
+        <LocationSection />
+      </section>
 
       {/* CTA Final */}
-      <section className="py-20 bg-nature-600 text-white text-center">
+      <section id="contact" className="py-20 bg-nature-600 text-white text-center">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold mb-6">{t('cta.title')}</h2>
           <p className="text-xl mb-8 max-w-2xl mx-auto">

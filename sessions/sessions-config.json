@@ -41,7 +41,9 @@
       "MultiEdit",
       "NotebookEdit"
     ],
-    "bash_read_patterns": [],
+    "bash_read_patterns": [
+      "npm run dev"
+    ],
     "bash_write_patterns": [],
     "extrasafe": true
   },

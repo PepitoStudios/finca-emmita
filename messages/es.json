@@ -1,9 +1,8 @@
 {
   "navigation": {
     "home": "Inicio",
-    "laCasita": "La Casita",
-    "laOlivita": "La Olivita",
-    "activities": "Actividades",
+    "accommodations": "Alojamientos",
+    "location": "Ubicación",
     "contact": "Contacto",
     "menu": "Menú",
     "closeMenu": "Cerrar menú",

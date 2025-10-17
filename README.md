@@ -27,18 +27,22 @@ Sitio web moderno para Ecoturismo Villafeliche, un alojamiento rural ecológico 
 - ✅ Input (con validación y errores)
 
 ### Layout Components
-- ✅ Header (sticky con efecto scroll)
-- ✅ Navigation (responsive con dropdown menus)
-- ✅ Footer (multi-columna con enlaces, contacto, redes sociales)
+- ✅ Header (sticky con efecto scroll, pasa estado isScrolled a Navigation)
+- ✅ Navigation (hash-based con smooth scroll, Intersection Observer, responsive mobile menu)
+- ✅ Footer (multi-columna con enlaces hash, contacto, redes sociales)
 - ✅ WhatsAppButton (flotante con animaciones)
 
+### Arquitectura de Navegación
+- ✅ Single-page application con secciones (#hero, #accommodations, #location, #contact)
+- ✅ Hash-based anchors con smooth scrolling
+- ✅ Intersection Observer para detección de sección activa
+- ✅ Colores adaptativos según estado de scroll (blanco cuando transparente, oscuro cuando scrolled)
+- ✅ Soporte para deep linking con URL hash
+- ✅ Gestión de foco para accesibilidad y navegación por teclado
+
 ### Páginas
-- ✅ Home (con Hero, secciones de filosofía, CTAs)
-- ⏳ Alojamientos (pendiente)
-- ⏳ Servicios (pendiente)
-- ⏳ Contacto (pendiente)
-- ⏳ Delta del Ebro (pendiente)
-- ⏳ Retiros de Yoga (pendiente)
+- ✅ Home (single-page con secciones Hero, Accommodations, Location, Contact)
+- ⏳ Páginas adicionales (si se necesitan en el futuro)
 
 ## Instalación y Desarrollo
 
@@ -99,6 +103,55 @@ El sitio usa una paleta natural inspirada en el ecosistema del Delta del Ebro:
 - **Accent** (acento): Dorado/caramelo (#c89465)
 
 Todos los colores están disponibles en Tailwind con escalas de 50-900.
+
+## Arquitectura del Sistema de Navegación
+
+Este proyecto implementa una arquitectura de **single-page application (SPA)** con navegación basada en hash anchors:
+
+### Componentes Clave
+
+**Header** (`src/components/layout/Header.tsx`)
+- Detecta el estado de scroll (isScrolled) mediante window scroll events
+- Pasa isScrolled como prop al componente Navigation
+- Adapta colores del branding según estado de scroll
+
+**Navigation** (`src/components/layout/Navigation.tsx`)
+- Navegación hash-based con smooth scrolling (#hero, #accommodations, #location, #contact)
+- Usa Intersection Observer API para detectar la sección activa visible
+- Colores adaptativos: blanco cuando header transparente, oscuro cuando scrolled
+- Indicador animado de sección activa con Framer Motion
+- Mobile menu: overlay full-screen con animaciones slide-in
+- Gestión de foco para accesibilidad (focus management en elementos target)
+- Soporte para deep linking: detecta URL hash inicial
+- Cleanup apropiado: disconnect() en Intersection Observer
+
+**Footer** (`src/components/layout/Footer.tsx`)
+- Enlaces de navegación convertidos a hash anchors
+- Smooth scroll handlers con window.history.pushState para actualizar URL
+- Mantiene consistencia con el sistema de navegación principal
+
+**Page** (`src/app/page.tsx`)
+- Secciones con IDs correspondientes: hero, accommodations, location, contact
+- Los IDs permiten la navegación hash y detección por Intersection Observer
+
+### Características de Accesibilidad
+
+- Focus management: elementos target reciben focus después de scroll
+- Keyboard navigation: navegación completa por teclado
+- ARIA labels: botones de menu con labels descriptivos
+- Error handling: console.error en development si sección no existe
+- Mobile UX: cierre automático del menu al navegar, prevención de scroll del body
+
+### Patrones Técnicos
+
+- **State management**: useState para activeSection y mobileMenuOpen
+- **Side effects**: useEffect para scroll listeners y Intersection Observer
+- **Event handlers**: preventDefault + scrollIntoView + history.pushState
+- **Conditional styling**: cn() utility para clases condicionales basadas en isScrolled
+- **Memory management**: cleanup functions en todos los useEffect
+- **Animation**: Framer Motion para active indicators y mobile menu transitions
+
+Referencia de archivos modificados en tarea `m-refactor-remove-page-sections.md`
 
 ## Próximos Pasos
 

@@ -11,40 +11,75 @@ export default function Footer() {
     <footer className="bg-earth-800 text-earth-100">
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {/* Accommodations */}
+          {/* Quick Links */}
           <div>
             <h3 className="text-lg font-semibold text-white mb-4">
               {t('footer.accommodations')}
             </h3>
             <ul className="space-y-2">
               <li>
-                <Link href="/" className="hover:text-nature-300 transition-colors text-sm">
+                <a
+                  href="#hero"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    const element = document.querySelector('#hero');
+                    if (element) {
+                      element.scrollIntoView({ behavior: 'smooth' });
+                      window.history.pushState(null, '', '#hero');
+                    }
+                  }}
+                  className="hover:text-nature-300 transition-colors text-sm"
+                >
                   {t('navigation.home')}
-                </Link>
+                </a>
               </li>
               <li>
-                <Link
-                  href="/la-casita"
+                <a
+                  href="#accommodations"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    const element = document.querySelector('#accommodations');
+                    if (element) {
+                      element.scrollIntoView({ behavior: 'smooth' });
+                      window.history.pushState(null, '', '#accommodations');
+                    }
+                  }}
                   className="hover:text-nature-300 transition-colors text-sm"
                 >
-                  {t('navigation.laCasita')}
-                </Link>
+                  {t('navigation.accommodations')}
+                </a>
               </li>
               <li>
-                <Link
-                  href="/la-olivita"
+                <a
+                  href="#location"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    const element = document.querySelector('#location');
+                    if (element) {
+                      element.scrollIntoView({ behavior: 'smooth' });
+                      window.history.pushState(null, '', '#location');
+                    }
+                  }}
                   className="hover:text-nature-300 transition-colors text-sm"
                 >
-                  {t('navigation.laOlivita')}
-                </Link>
+                  {t('navigation.location')}
+                </a>
               </li>
               <li>
-                <Link
-                  href="/activities"
+                <a
+                  href="#contact"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    const element = document.querySelector('#contact');
+                    if (element) {
+                      element.scrollIntoView({ behavior: 'smooth' });
+                      window.history.pushState(null, '', '#contact');
+                    }
+                  }}
                   className="hover:text-nature-300 transition-colors text-sm"
                 >
-                  {t('navigation.activities')}
-                </Link>
+                  {t('navigation.contact')}
+                </a>
               </li>
             </ul>
           </div>
@@ -118,12 +153,20 @@ export default function Footer() {
 
             {/* Contact Button */}
             <div className="mt-6">
-              <Link
-                href="/contact"
+              <a
+                href="#contact"
+                onClick={(e) => {
+                  e.preventDefault();
+                  const element = document.querySelector('#contact');
+                  if (element) {
+                    element.scrollIntoView({ behavior: 'smooth' });
+                    window.history.pushState(null, '', '#contact');
+                  }
+                }}
                 className="inline-flex items-center gap-2 px-6 py-3 bg-nature-600 text-white rounded-lg hover:bg-nature-700 transition-colors text-sm font-medium"
               >
                 {t('footer.contactEmma')}
-              </Link>
+              </a>
             </div>
           </div>
         </div>

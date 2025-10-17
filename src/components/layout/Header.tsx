@@ -36,7 +36,7 @@ export default function Header() {
               <span
                 className={cn(
                   'text-sm font-light transition-colors',
-                  isScrolled ? 'text-earth-600' : 'text-earth-100'
+                  isScrolled ? 'text-earth-600' : 'text-white'
                 )}
               >
                 {t('brandSubtitle')}
@@ -53,7 +53,7 @@ export default function Header() {
           </Link>
 
           {/* Navigation */}
-          <Navigation />
+          <Navigation isScrolled={isScrolled} />
         </div>
       </div>
     </header>

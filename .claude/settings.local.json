@@ -10,7 +10,8 @@
       "Bash(git add:*)",
       "Bash(git commit:*)",
       "Bash(sessions/bin/sessions config phrases list task_startup)",
-      "Bash(sessions/bin/sessions:*)"
+      "Bash(sessions/bin/sessions:*)",
+      "Bash(git checkout:*)"
     ],
     "deny": [],
     "ask": []

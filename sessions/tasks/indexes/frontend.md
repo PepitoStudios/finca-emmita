@@ -11,6 +11,7 @@ description: Tasks related to user interface, navigation, styling, and frontend 
 ### High Priority
 
 ### Medium Priority
+- `m-fix-language-text-inconsistencies.md` - Fix text that doesn't match selected language across pages, including hardcoded strings and English-only data files
 
 ### Low Priority
 

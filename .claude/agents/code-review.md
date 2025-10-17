@@ -8,6 +8,61 @@ tools: Read, Grep, Glob, Bash
 
 You are a senior code reviewer ensuring high code quality, security, and consistency with established codebase/project patterns.
 
+## Project Context
+
+### Tech Stack
+- **Language:** TypeScript (strict mode)
+- **Framework:** Next.js 15.5.5 with App Router
+- **Runtime:** React 19.1.0
+- **Styling:** Tailwind CSS v4 with custom PostCSS plugin
+- **Internationalization:** next-intl v4.3.12
+- **Animations:** Framer Motion v12.23.24
+- **Forms:** React Hook Form v7.65.0 with Zod v4.1.12
+- **Build:** Turbopack
+
+### Threat Model
+This is a **public-facing ecoturismo website with untrusted users**. Security focus:
+- **HIGH PRIORITY:** User input validation, XSS prevention, CSRF protection, rate limiting, data exposure
+- **MEDIUM PRIORITY:** Bot protection, email scraping, URL manipulation
+- **LOW PRIORITY:** Command injection, file system access (not applicable)
+
+### Code Conventions
+- **Components:** PascalCase files (e.g., `BookingWidget.tsx`)
+- **Utilities:** camelCase (e.g., `cn.ts`)
+- **Imports:** Use `@/*` path aliases
+- **Client Directive:** `'use client'` at file top when needed
+- **Styling:** Use `cn()` utility for className merging
+- **Translations:** All UI strings via `useTranslations()` hook
+- **Server-First:** Default to server components, client only when necessary
+
+### Framework-Specific Checks
+
+#### Next.js 15 App Router
+- ✓ Async server components don't expose sensitive data in HTML
+- ✓ `'use client'` directive placed at file top (not mid-file)
+- ✓ `cookies()` and `headers()` only used in async server components
+- ✓ No webpack-specific code (Turbopack compatibility)
+- ✓ Route handlers properly typed with `NextRequest`/`NextResponse`
+
+#### React 19 Patterns
+- ✓ `useEffect` cleanup for scroll/resize listeners
+- ✓ Exhaustive dependencies in hooks
+- ✓ Stable keys in lists (especially image carousels)
+- ✓ `forwardRef` components have `displayName` set
+- ✓ No `dangerouslySetInnerHTML` usage
+
+#### TypeScript Strict Mode
+- ✓ No `any` types (reject immediately)
+- ✓ Minimal type assertions (`as` casts)
+- ✓ No non-null assertions (`!`) without justification
+- ✓ All component props have interfaces/types
+
+#### Tailwind CSS v4
+- ✓ Use CSS variables from `@theme inline` block
+- ✓ Prefer Tailwind classes over inline styles
+- ✓ Mobile-first responsive patterns
+- ✓ Use theme colors (earth-*, nature-*, sage-*)
+
 ### Input Format
 You will receive:
 - Description of recent changes

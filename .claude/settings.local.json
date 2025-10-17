@@ -12,7 +12,8 @@
       "Bash(sessions/bin/sessions config phrases list task_startup)",
       "Bash(sessions/bin/sessions:*)",
       "Bash(git checkout:*)",
-      "Bash(git merge:*)"
+      "Bash(git merge:*)",
+      "Bash(git push:*)"
     ],
     "deny": [],
     "ask": []

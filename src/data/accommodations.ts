@@ -112,19 +112,19 @@ export const accommodations: Accommodation[] = [
     size: 65,
     images: [
       {
-        url: 'https://static.wixstatic.com/media/922666_1dfe8c983bb940a3b142055475d3724d~mv2.jpg/v1/fill/w_1200,h_900,q_90/922666_1dfe8c983bb940a3b142055475d3724d~mv2.jpg',
+        url: 'https://img.alohacamp.com/s4eAvzDotIWtmrzej48Z627rS223BCDg5_XPCNkrrzM/resize:fit:1920:1246/enlarge:1/czM6Ly9hbG9oYS5pbWFnZXMvcHJvcGVydGllcy81N2FiNDVjZDA1ZWY1OTg2YjQ1OWVhMTdkOWQxNjRjNmJiOTUzNjU5LmpwZw',
         alt: 'Casa Luna - Exterior view with valley backdrop',
         width: 1200,
         height: 900,
       },
       {
-        url: 'https://static.wixstatic.com/media/922666_4bb791b85b284c8ca4a058e5733ae629~mv2.jpg/v1/fill/w_1200,h_900,q_90/922666_4bb791b85b284c8ca4a058e5733ae629~mv2.jpg',
+        url: 'https://img.alohacamp.com/kQORiQH2yDOMUJXxh6rRXnxHxwc4EttCBwnaKaQ3ZWY/resize:fit:1920:1246/enlarge:1/czM6Ly9hbG9oYS5pbWFnZXMvcHJvcGVydGllcy8yMGY2MTllMzRhMGRiNWY2ODg1YmExMjE3Njc1ODkzNDc4NWNlMjg3LmpwZw',
         alt: 'Casa Luna - Interior living area with fireplace',
         width: 1200,
         height: 900,
       },
       {
-        url: 'https://static.wixstatic.com/media/922666_b18bd962048443b8912e46de3dd1db8f~mv2.jpg/v1/fill/w_1200,h_900,q_90/922666_b18bd962048443b8912e46de3dd1db8f~mv2.jpg',
+        url: 'https://img.alohacamp.com/kHCSo3iF61tbHSWl3289CB5xIPxi9Lt0UyTBHvySexc/resize:fit:1920:1246/enlarge:1/czM6Ly9hbG9oYS5pbWFnZXMvcHJvcGVydGllcy9hZmZhNmUyMzM4Y2FlOGI2MWE1OGIxMTA3MTM4Nzg1Y2E1NTM1OWQ1LmpwZw',
         alt: 'Casa Luna - Shared pool area',
         width: 1200,
         height: 900,

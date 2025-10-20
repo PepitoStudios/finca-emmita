@@ -3,12 +3,13 @@
 import { useState, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Calendar, Users, Home, ChevronDown, ChevronUp, Phone } from 'lucide-react';
+import { Calendar, Users, Home, ChevronDown, ChevronUp, Phone, X } from 'lucide-react';
 import Button from './Button';
 import { accommodations } from '@/data/accommodations';
 
 export default function BookingWidget() {
   const t = useTranslations('booking');
+  const [isOpen, setIsOpen] = useState(true) //NEW
   const [isVisible, setIsVisible] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
   const [checkIn, setCheckIn] = useState('');
@@ -61,20 +62,39 @@ export default function BookingWidget() {
     window.open(`https://wa.me/34681315149?text=${message}`, '_blank');
   };
 
+  const toggleWidget = () => {
+    setIsOpen(!isOpen)
+  }
+
   if (!isVisible) return null;
+
+  if (!isOpen) return (
+    <>
+      <motion.button
+        initial={{ opacity: 0, x: 50 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.25 }}
+        className="hidden lg:block fixed top-24 right-6 z-50 p-4 bg-nature-600 rounded-full"
+        onClick={ () => toggleWidget() }><Calendar color='white'/>
+      </motion.button>
+    </>)
 
   return (
     <>
       {/* Desktop Version - Sticky Sidebar */}
       <motion.div
+
         initial={{ opacity: 0, x: 50 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.5 }}
         className="hidden lg:block fixed top-24 right-8 z-40 w-80"
       >
+        
         <div className="bg-white rounded-2xl shadow-2xl border border-earth-100 overflow-hidden">
           {/* Header */}
           <div className="bg-gradient-to-br from-nature-600 to-nature-700 text-white p-6">
+            <button className='absolute right-6  z-50' 
+        onClick={ () => toggleWidget() }><X /></button>
             <h3 className="text-xl font-bold mb-1">{t('title')}</h3>
             <p className="text-sm text-nature-100">{t('guarantee')}</p>
           </div>

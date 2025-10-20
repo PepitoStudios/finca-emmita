@@ -2,9 +2,8 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import Link from 'next/link';
 import { useTranslations } from 'next-intl';
-import { Check, Users, Home, Euro, ArrowRight, ChevronDown, ChevronUp } from 'lucide-react';
+import { Check, Users, Home, Euro, ArrowRight, ChevronDown, ChevronUp, ChevronRight, ChevronLeft } from 'lucide-react';
 import Button from '@/components/ui/Button';
 import type { Accommodation } from '@/lib/types';
 
@@ -35,6 +34,7 @@ function idToTranslationKey(id: string): string {
 export default function AccommodationCard({ accommodation, index }: AccommodationCardProps) {
   const t = useTranslations('accommodations');
   const [showAllAmenities, setShowAllAmenities] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const isEven = index % 2 === 0;
   const imageAnimation = isEven ? fadeInLeft : fadeInRight;
   const contentAnimation = isEven ? fadeInRight : fadeInLeft;
@@ -46,11 +46,24 @@ export default function AccommodationCard({ accommodation, index }: Accommodatio
   const amenitiesObj = t.raw(`${accommodationKey}.amenities`) as Record<string, string>;
   const amenities = Object.values(amenitiesObj);
 
+  const previousImage = () => {
+    if (currentImageIndex > 0)
+      setCurrentImageIndex(currentImageIndex - 1);
+    else
+      setCurrentImageIndex(accommodation.images.length - 1);
+  }
+
+  const nextImage = () => {
+    if (currentImageIndex < accommodation.images.length - 1)
+      setCurrentImageIndex(currentImageIndex + 1);
+    else
+      setCurrentImageIndex(0)
+  }
+
   return (
     <div
-      className={`grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center ${
-        isEven ? '' : 'lg:flex-row-reverse'
-      }`}
+      className={`grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center ${isEven ? '' : 'lg:flex-row-reverse'
+        }`}
     >
       {/* Image Side */}
       <motion.div
@@ -61,13 +74,41 @@ export default function AccommodationCard({ accommodation, index }: Accommodatio
         className={`relative ${isEven ? 'lg:order-1' : 'lg:order-2'}`}
       >
         <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl group">
-          {/* Real Image */}
-          <img
-            src={accommodation.images[0]?.url || '/images/placeholder.jpg'}
-            alt={accommodation.images[0]?.alt || accommodation.title}
-            className="absolute inset-0 w-full h-full object-cover"
-            loading="lazy"
-          />
+          {/* Background Image Carousel */}
+          <motion.div
+            className="absolute inset-0"
+          >
+            {accommodation.images.map((image, index) => (
+              <motion.div
+                key={image.url}
+                className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+                initial={{ opacity: 0 }}
+                animate={{
+                  opacity: currentImageIndex === index ? 1 : 0,
+                  scale: currentImageIndex === index ? 1 : 1.1
+                }}
+                transition={{ duration: 1.5, ease: 'easeInOut' }}
+                style={{
+                  backgroundImage: `url(${image.url})`,
+                }}
+              />
+            ))}
+          </motion.div>
+          {/* Navigation Arrows */}
+          <button
+            onClick={previousImage}
+            className="absolute left-4 top-1/2 -translate-y-1/2 p-3 bg-white/90 hover:bg-white rounded-full shadow-lg transition-all hover:scale-110 z-20"
+            aria-label={t('previous')}
+          >
+            <ChevronLeft className="w-4 h-4 text-earth-700" />
+          </button>
+          <button
+            onClick={nextImage}
+            className="absolute right-4 top-1/2 -translate-y-1/2 p-3 bg-white/90 hover:bg-white rounded-full shadow-lg transition-all hover:scale-110 z-20"
+            aria-label={t('next')}
+          >
+            <ChevronRight className="w-4 h-4 text-earth-700" />
+          </button>
 
           {/* Hover Overlay */}
           <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300" />
@@ -96,9 +137,8 @@ export default function AccommodationCard({ accommodation, index }: Accommodatio
 
         {/* Decorative Element */}
         <div
-          className={`hidden lg:block absolute -z-10 w-72 h-72 bg-gradient-to-br from-nature-100 to-earth-100 rounded-full blur-3xl opacity-60 ${
-            isEven ? '-right-20 -bottom-20' : '-left-20 -bottom-20'
-          }`}
+          className={`hidden lg:block absolute -z-10 w-72 h-72 bg-gradient-to-br from-nature-100 to-earth-100 rounded-full blur-3xl opacity-60 ${isEven ? '-right-20 -bottom-20' : '-left-20 -bottom-20'
+            }`}
         />
       </motion.div>
 
@@ -198,25 +238,16 @@ export default function AccommodationCard({ accommodation, index }: Accommodatio
 
         {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row gap-3">
-          <Link href={`/${accommodation.slug}`} className="flex-1">
-            <Button
-              size="lg"
-              variant="primary"
-              className="w-full group"
-            >
-              {t('learnMore')}
-              <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-            </Button>
-          </Link>
           <Button
             size="lg"
-            variant="outline"
+            variant="primary"
             className="flex-1"
             onClick={() => {
               document.querySelector('body')?.scrollIntoView({ behavior: 'smooth' });
             }}
           >
             {t('checkAvailability')}
+            <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
           </Button>
         </div>
       </motion.div>

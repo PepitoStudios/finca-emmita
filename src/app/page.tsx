@@ -112,7 +112,7 @@ export default function Home() {
       </section>
 
       {/* Testimonials */}
-      <TestimonialsSection />
+      {/* <TestimonialsSection /> */}
 
       {/* Host Profile */}
       <HostProfile />

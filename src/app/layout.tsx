@@ -80,7 +80,7 @@ export default async function RootLayout({
           <main className="flex-grow">{children}</main>
           <Footer />
           <WhatsAppButton />
-          <BookingWidget />
+          {/* <BookingWidget /> */}
         </NextIntlClientProvider>
       </body>
     </html>

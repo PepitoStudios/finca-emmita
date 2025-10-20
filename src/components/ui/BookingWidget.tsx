@@ -9,7 +9,7 @@ import { accommodations } from '@/data/accommodations';
 
 export default function BookingWidget() {
   const t = useTranslations('booking');
-  const [isOpen, setIsOpen] = useState(true) //NEW
+  const [isOpen, setIsOpen] = useState(true)
   const [isVisible, setIsVisible] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
   const [checkIn, setCheckIn] = useState('');

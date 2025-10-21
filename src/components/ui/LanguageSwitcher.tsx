@@ -9,8 +9,9 @@ import { type Locale } from '@/i18n/config';
 import { setLocale } from '@/i18n/locale';
 
 const languages = [
-  { code: 'en' as Locale, name: 'English', flag: '🇬🇧' },
   { code: 'es' as Locale, name: 'Español', flag: '🇪🇸' },
+  { code: 'en' as Locale, name: 'English', flag: '🇬🇧' },
+  { code: 'fr' as Locale, name: 'Français', flag: '🇫🇷' },
 ];
 
 export default function LanguageSwitcher({ isMobile = false }: { isMobile?: boolean }) {
@@ -46,9 +47,6 @@ export default function LanguageSwitcher({ isMobile = false }: { isMobile?: bool
           >
             <span className="text-2xl">{lang.flag}</span>
             <span className="font-medium text-lg">{lang.name}</span>
-            {lang.code === locale && (
-              <span className="ml-auto text-xs bg-white/20 px-2 py-1 rounded">{t('active')}</span>
-            )}
             {isPending && lang.code !== locale && (
               <span className="ml-auto animate-spin">⏳</span>
             )}

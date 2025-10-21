@@ -19,7 +19,7 @@ export default function LocationSection() {
     },
     {
       name: t('theSea'),
-      distance: t('minutesDrive', { minutes: '20' }),
+      distance: t('minutesDrive', { minutes: '15' }),
       icon: Waves,
       description: t('theSeaDesc'),
       color: 'text-blue-600',

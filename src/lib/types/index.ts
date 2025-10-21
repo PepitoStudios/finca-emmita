@@ -26,7 +26,8 @@ export interface Pricing {
   weekend: number;
   highSeason: number;
   august?: number;
-  extraPerson?: number;
+  cleaning: number;
+  pets?: number;
 }
 
 export interface Service {

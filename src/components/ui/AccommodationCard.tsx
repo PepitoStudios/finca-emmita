@@ -6,6 +6,7 @@ import { useTranslations } from 'next-intl';
 import { Check, Users, Home, Euro, ArrowRight, ChevronDown, ChevronUp, ChevronRight, ChevronLeft } from 'lucide-react';
 import Button from '@/components/ui/Button';
 import type { Accommodation } from '@/lib/types';
+import { g } from 'framer-motion/client';
 
 interface AccommodationCardProps {
   accommodation: Accommodation;
@@ -33,6 +34,7 @@ function idToTranslationKey(id: string): string {
 
 export default function AccommodationCard({ accommodation, index }: AccommodationCardProps) {
   const t = useTranslations('accommodations');
+  const tCommon = useTranslations('common');
   const [showAllAmenities, setShowAllAmenities] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const isEven = index % 2 === 0;
@@ -58,6 +60,11 @@ export default function AccommodationCard({ accommodation, index }: Accommodatio
       setCurrentImageIndex(currentImageIndex + 1);
     else
       setCurrentImageIndex(0)
+  }
+
+  const sendAvailabilityRequest = () => {
+    const message = encodeURIComponent(t('whatsappMessage', { casita: t(`${accommodationKey}.title`), guests: accommodation.capacity }));
+    window.open(`https://wa.me/34681315149?text=${message}`, '_blank');
   }
 
   return (
@@ -98,14 +105,14 @@ export default function AccommodationCard({ accommodation, index }: Accommodatio
           <button
             onClick={previousImage}
             className="absolute left-4 top-1/2 -translate-y-1/2 p-3 bg-white/90 hover:bg-white rounded-full shadow-lg transition-all hover:scale-110 z-20"
-            aria-label={t('previous')}
+            aria-label={tCommon('previous')}
           >
             <ChevronLeft className="w-4 h-4 text-earth-700" />
           </button>
           <button
             onClick={nextImage}
             className="absolute right-4 top-1/2 -translate-y-1/2 p-3 bg-white/90 hover:bg-white rounded-full shadow-lg transition-all hover:scale-110 z-20"
-            aria-label={t('next')}
+            aria-label={tCommon('next')}
           >
             <ChevronRight className="w-4 h-4 text-earth-700" />
           </button>
@@ -228,10 +235,22 @@ export default function AccommodationCard({ accommodation, index }: Accommodatio
               €{accommodation.pricing.weekend}
             </span>
           </div>
-          <div className="flex justify-between items-center pt-3 border-t border-earth-200">
+          <div className="flex justify-between items-center mb-3">
             <span className="text-earth-600">{t('highSeason')}</span>
             <span className="text-2xl font-bold text-nature-700">
               €{accommodation.pricing.highSeason}
+            </span>
+          </div>
+          <div className="flex justify-between items-center pt-3 border-t border-earth-200">
+            <span className="text-earth-600">{t('cleaning')}</span>
+            <span className="text-2xl font-bold text-earth-900">
+              €{accommodation.pricing.cleaning}
+            </span>
+          </div>
+          <div className="flex justify-between items-center pt-3">
+            <span className="text-earth-600">{t('pets')}</span>
+            <span className="text-2xl font-bold text-earth-900">
+              €{accommodation.pricing.pets}
             </span>
           </div>
         </div>
@@ -242,9 +261,9 @@ export default function AccommodationCard({ accommodation, index }: Accommodatio
             size="lg"
             variant="primary"
             className="flex-1"
-            onClick={() => {
-              document.querySelector('body')?.scrollIntoView({ behavior: 'smooth' });
-            }}
+            onClick={() =>
+              sendAvailabilityRequest()
+            }
           >
             {t('checkAvailability')}
             <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />

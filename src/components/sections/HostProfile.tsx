@@ -74,7 +74,7 @@ export default function HostProfile() {
                 <p>{t('bio3')}</p>
               </div>
 
-              {/* Stats */}
+              {/* Stats 
               <div className="grid grid-cols-3 gap-4 py-6 border-y border-earth-200">
                 <div className="text-center">
                   <div className="text-3xl font-bold text-nature-600 mb-1">6+</div>
@@ -88,7 +88,7 @@ export default function HostProfile() {
                   <div className="text-3xl font-bold text-nature-600 mb-1">50+</div>
                   <p className="text-sm text-earth-600">{t('happyGuests')}</p>
                 </div>
-              </div>
+              </div>*/}
 
               {/* Values */}
               <div className="space-y-3">

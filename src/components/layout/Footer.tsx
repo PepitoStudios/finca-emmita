@@ -150,24 +150,6 @@ export default function Footer() {
                 </a>
               </div>
             </div>
-
-            {/* Contact Button */}
-            <div className="mt-6">
-              <a
-                href="#contact"
-                onClick={(e) => {
-                  e.preventDefault();
-                  const element = document.querySelector('#contact');
-                  if (element) {
-                    element.scrollIntoView({ behavior: 'smooth' });
-                    window.history.pushState(null, '', '#contact');
-                  }
-                }}
-                className="inline-flex items-center gap-2 px-6 py-3 bg-nature-600 text-white rounded-lg hover:bg-nature-700 transition-colors text-sm font-medium"
-              >
-                {t('footer.contactEmma')}
-              </a>
-            </div>
           </div>
         </div>
 

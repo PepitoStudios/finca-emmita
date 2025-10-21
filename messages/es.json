@@ -1,7 +1,7 @@
 {
   "navigation": {
     "home": "Inicio",
-    "accommodations": "Alojamientos",
+    "accommodations": "Casitas",
     "location": "Ubicación",
     "contact": "Contacto",
     "menu": "Menú",
@@ -11,7 +11,7 @@
   "hero": {
     "title": "Escápate a la Naturaleza",
     "subtitle": "Finca 100% autosuficiente en el corazón de Tarragona. Paz, desconexión y sostenibilidad.",
-    "cta": "Descubre Nuestros Alojamientos",
+    "cta": "Descubre nuestras casitas",
     "overline": "Casas Rurales Finca Emmita",
     "contactEmma": "Contactar a Emma",
     "contactButton": "Contactar a Emma",
@@ -20,13 +20,14 @@
     "quickFacts": {
       "selfSufficient": "100% Autosuficiente",
       "noNeighbors": "Sin Vecinos",
-      "peaceNature": "Paz y Naturaleza"
+      "peaceNature": "Paz y Naturaleza",
+      "petfriendly": "Petfriendly"
     }
   },
   "about": {
-    "intro": "Finca Emmita está a 10 minutos en coche de El Perello y a 20 minutos del mar, estamos en medio de un valle, sin vecinos ni carreteras cerca. Todo lo que puedes oír es el sonido del silencio. La finca es 100% autosuficiente. Funciona con energía solar, recogemos agua de lluvia y el agua gris se recicla para regar el huerto y las plantas. También ofrecemos internet de alta velocidad.",
+    "intro": "Finca Emmita está a 10 minutos en coche de El Perelló y a 20 minutos del mar, estamos en medio de un valle, sin vecinos ni carreteras cerca. Todo lo que puedes oír es el sonido del silencio. La finca es 100% autosuficiente. Funciona con energía solar, recogemos agua de lluvia y el agua gris se recicla para regar el huerto y las plantas. También ofrecemos internet de alta velocidad.",
     "highlight": "SI BUSCAS PAZ, TRANQUILIDAD, DESCONEXIÓN Y DISFRUTAR DE LA MADRE NATURALEZA, este es el lugar.",
-    "elPerello": "El pueblo más cercano es El Perello, un pequeño pueblo que está a 5 kilómetros del mar. Por esto no se ha desarrollado como centro turístico, y mantiene un encanto rústico. Es solo un pueblo pequeño, pero tiene todas las comodidades, cafeterías, restaurantes, tiendas de todo tipo, un pequeño supermercado, bancos, una lavandería, una farmacia y clínica, y una oficina de turismo. Hay servicios de internet, y periódicos internacionales disponibles en el quiosco. Los sábados por la mañana hay mercado local. El Perello también es famoso por su miel local."
+    "elPerello": "El pueblo más cercano es El Perelló, un pequeño pueblo que está a 5 kilómetros del mar. Por esto no se ha desarrollado como centro turístico, y mantiene un encanto rústico. Es solo un pueblo pequeño, pero tiene todas las comodidades, cafeterías, restaurantes, tiendas de todo tipo, un pequeño supermercado, bancos, una lavandería, una farmacia y una oficina de turismo. Hay servicios de internet, y periódicos internacionales disponibles en el quiosco. Los sábados por la mañana hay mercado local. El Perelló también es famoso por su miel y aceite."
   },
   "features": {
     "title": "¿Por Qué Elegir Finca Emmita?",
@@ -44,19 +45,21 @@
     },
     "petFriendly": {
       "title": "Apto para Mascotas",
-      "description": "Las mascotas viajan gratis"
+      "description": "Trae a tus amigos peludos"
     }
   },
   "accommodations": {
-    "sectionTitle": "Alojamientos",
-    "title": "Elige Tu Refugio Perfecto",
-    "subtitle": "Ambas recién construidas o renovadas, diseñadas para la comodidad mientras abrazan la vida sostenible",
+    "sectionTitle": "Casitas",
+    "title": "Elige Tu Casita Perfecta",
+    "subtitle": "Diseñadas para la comodidad mientras abrazan la vida sostenible",
     "keyFeatures": "Características Principales",
     "moreFeatures": "características más",
     "showLess": "Mostrar menos",
     "weekday": "Entre semana",
     "weekend": "Fin de semana",
     "highSeason": "Temporada alta",
+    "pets": "Mascotas (por estancia y mascota)",
+    "cleaning": "Tarifa de limpieza",
     "from": "Desde",
     "perNight": "/noche",
     "fromPerNight": "Desde €{price}/noche",
@@ -68,62 +71,61 @@
     "upToGuests": "Hasta {count} Huéspedes",
     "space": "Espacio",
     "cantDecide": "¿No puedes decidir cuál?",
-    "cantDecideText": "Ambos alojamientos ofrecen experiencias únicas. Contacta a Emma para recomendaciones personalizadas según tus necesidades.",
-    "cantDecideDescription": "Ambos alojamientos ofrecen experiencias únicas. Contacta a Emma para recomendaciones personalizadas según tus necesidades.",
-    "callEmma": "Llamar a Emma",
+    "cantDecideText": "Las casitas ofrecen experiencias únicas. Contacta a Emma para recomendaciones personalizadas según tus necesidades.",
+    "cantDecideDescription": "Las casitas ofrecen experiencias únicas. Contacta a Emma para recomendaciones personalizadas según tus necesidades.",
     "whatsappEmma": "WhatsApp a Emma",
-    "whatsappMessage": "¡Hola! Me gustaría saber más sobre los alojamientos",
+    "whatsappMessage": "¡Hola! \nMe gustaría saber si {casita} está disponible desde [FECHA_ENTRADA] hasta [FECHA_SALIDA] para {guests} huéspedes. \nGracias.",
     "laCasita": {
       "title": "La Casita",
-      "shortDescription": "Cabaña de madera recién construida con cocina bien equipada, sala con sofá cama y terraza privada.",
-      "longDescription": "La Casita es una cabaña de madera recién construida y ofrece una pequeña cocina bien equipada, una sala de estar con sofá cama y una estufa de pellets, un dormitorio doble separado. El baño tiene una ducha grande. Hay una bonita terraza con mesa y sillas, tumbonas.",
+      "shortDescription": "Cabaña de madera con cocina bien equipada, habitación, sala con sofá y terraza privada.",
+      "longDescription": "La Casita es una cabaña de madera recién construida que ofrece una sala principal con pequeña cocina bien equipada, comedor, sofá, estufa de pellets y un dormitorio doble separado. El baño tiene una ducha grande. Hay una bonita terraza con mesa, sillas y tumbonas.",
       "amenities": {
         "kitchen": "Cocina bien equipada",
         "livingRoom": "Sala de estar con sofá cama",
         "pelletStove": "Estufa de pellets",
         "bedroom": "Dormitorio doble separado",
         "shower": "Ducha grande",
+        "towels": "Toallas y ropa de cama",
         "terrace": "Terraza privada",
         "tableChairs": "Mesa y sillas",
         "sunloungers": "Tumbonas",
         "wifi": "WiFi gratis",
-        "pets": "Mascotas permitidas (gratis)"
+        "childFriendly": "Apto para niños (mini-cuna disponible)",
+        "pets": "Mascotas permitidas"
       }
     },
     "laOlivita": {
       "title": "La Olivita",
-      "shortDescription": "Recientemente renovada con altillo para dormir, estufa de leña y terraza con BBQ.",
-      "longDescription": "La Olivita está recién renovada y ofrece una pequeña cocina bien equipada, una sala de estar con sofá cama y estufa de leña, el altillo tiene una cama doble y es accesible por escaleras. El baño tiene una ducha grande y un inodoro de compostaje. Hay una bonita terraza con mesa y sillas, tumbonas y BBQ (no se usa de junio a septiembre por riesgo de incendios y se reemplaza por una plancha)",
+      "shortDescription": "Casa de piedra con altillo para dormir, estufa de leña y terraza con BBQ.",
+      "longDescription": "La Olivita es una casa de campo tradicional y ofrece una pequeña cocina bien equipada, una sala de estar con sofá y estufa de leña, el altillo tiene una cama doble y es accesible por escaleras. El baño tiene una ducha grande. Hay una bonita terraza con mesa y sillas, tumbonas y BBQ (no se usa de junio a septiembre por riesgo de incendios y se reemplaza por una plancha)",
       "amenities": {
         "kitchen": "Cocina bien equipada",
         "livingRoom": "Sala de estar con sofá cama",
         "woodBurner": "Estufa de leña",
         "mezzanine": "Altillo para dormir (cama doble)",
-        "stairs": "Accesible por escaleras",
         "shower": "Ducha grande",
-        "compostingToilet": "Inodoro de compostaje",
+        "towels": "Toallas y ropa de cama",
         "terrace": "Terraza privada",
         "bbq": "BBQ / Plancha",
         "tableChairs": "Mesa y sillas",
         "sunloungers": "Tumbonas",
         "wifi": "WiFi gratis",
-        "pets": "Mascotas permitidas (gratis)"
+        "pets": "Mascotas permitidas"
       }
     },
     "casaLuna": {
       "title": "Casa Luna",
-      "shortDescription": "Casa ecológica de madera con 2 habitaciones, 2 baños, piscina compartida y vistas impresionantes del valle.",
-      "longDescription": "Casa Luna es un refugio tranquilo enclavado entre valles y montañas. Esta casa ecológica de madera, construida hace 20 años, es completamente autosuficiente con energía solar y recolección de agua de lluvia. Con 2 habitaciones y 2 baños, puede alojar hasta 4 huéspedes. Disfruta de la piscina compartida (junio-septiembre), terraza exterior con parrilla, y la compañía de animales residentes amigables. Ubicada a 10 minutos de El Perelló y 20 minutos del mar, accesible por un pintoresco camino de tierra.",
+      "shortDescription": "Casa de madera con 2 habitaciones con baño en suite, porche acogedor y estufa de leña.",
+      "longDescription": "Casa Luna es una casa de madera, construida hace 20 años completamente autosuficiente con energía solar y recolección de agua de lluvia. Con 2 habitaciones con baños en suite, puede alojar hasta 4 huéspedes. Disfruta de la terraza exterior con mesa, sofá y tumbonas.",
       "amenities": {
         "bedrooms": "2 habitaciones",
         "bathrooms": "2 baños (uno con inodoro de compostaje)",
+        "towels": "Toallas y ropa de cama",
         "kitchen": "Cocina bien equipada",
         "fireplace": "Chimenea",
         "terrace": "Terraza exterior",
-        "grill": "Parrilla",
         "wifi": "WiFi de alta velocidad",
-        "childFriendly": "Apto para niños (mini-cuna disponible)",
-        "pets": "Mascotas permitidas (gratis)"
+        "pets": "Mascotas permitidas"
       }
     }
   },
@@ -171,14 +173,14 @@
     "subtitle": "Apasionada por la vida sostenible y la naturaleza",
     "sectionTitle": "Tu Anfitriona",
     "bio1": "¡Hola! Soy Emma, y he estado viviendo en Finca Emmita desde 2018. Después de años en la ciudad, decidí crear un espacio donde la gente pudiera realmente desconectar y reconectar con la naturaleza.",
-    "bio2": "Lo que comenzó como un sueño personal se convirtió en realidad cuando transformé este hermoso valle en un refugio 100% autosuficiente. Cada aspecto de la finca - desde los paneles solares hasta la recolección de agua de lluvia - refleja mi compromiso con la vida sostenible.",
+    "bio2": "Lo que comenzó como un sueño personal se convirtió en realidad cuando transformé esta finca en una 100% autosuficiente, desde los paneles solares hasta la recolección de agua de lluvia.",
     "bio3": "Me encanta compartir este paraíso tranquilo con huéspedes que aprecian la belleza de la simplicidad, el sonido del silencio y la magia de las noches estrelladas sin contaminación lumínica. Ya sea que necesites recomendaciones para rutas de senderismo locales o consejos para vivir de forma sostenible, ¡siempre estoy feliz de ayudar!",
     "yearsHosting": "Años como Anfitriona",
     "rating": "Valoración",
     "happyGuests": "Huéspedes Felices",
     "careAbout": "Lo Que Me Importa",
     "sustainability": "Sostenibilidad",
-    "sustainabilityDesc": "Vida 100% fuera de la red con energía renovable",
+    "sustainabilityDesc": "Vivir en armonía con la naturaleza y el medio ambiente",
     "hospitality": "Hospitalidad",
     "hospitalityDesc": "Hacer que cada huésped se sienta como en casa",
     "community": "Comunidad",
@@ -195,7 +197,7 @@
     "whatsNearby": "Qué Hay Cerca",
     "howToGetHere": "Cómo Llegar Aquí",
     "fromCity": "Desde {city}",
-    "elPerello": "El Perello",
+    "elPerello": "El Perelló",
     "elPerelloDesc": "Pueblo local con tiendas y restaurantes",
     "theSea": "El Mar",
     "theSeaDesc": "Hermosas playas y paseos costeros",
@@ -206,9 +208,9 @@
     "minutesDrive": "{minutes} minutos en coche",
     "minutesWalk": "{minutes} minutos caminando",
     "gettingHere": "Cómo llegar: Recomendamos alquilar un coche para máxima flexibilidad. Se proporcionarán indicaciones detalladas al reservar.",
-    "publicTransport": "Opciones de transporte público disponibles hasta El Perello, luego taxi a la finca",
+    "publicTransport": "Opciones de transporte público disponibles hasta El Perelló",
     "offGridNote": "Experiencia Verdaderamente Fuera de la Red",
-    "offGridDescription": "Ubicada en medio de un valle sin vecinos a la vista. Los últimos 2km son de camino sin asfaltar - perfecto para desconectar del mundo exterior. No se requiere un vehículo 4x4, ¡pero conduce con cuidado!",
+    "offGridDescription": "Ubicada en medio de un valle sin vecinos a la vista. Los últimos 2km son de camino sin asfaltar - perfecto para desconectar del mundo exterior. No se requiere un vehículo 4x4, ¡pero conduce con cuidado y despacito!",
     "directions": {
       "barcelona": "2 horas",
       "valencia": "1.5 horas",
@@ -250,7 +252,7 @@
     "followUs": "Síguenos",
     "contactEmma": "Contactar a Emma",
     "copyright": "© {year} Finca Emmita",
-    "location": "Ubicación: {distance} de El Perello, {seaDistance} del mar."
+    "location": "Ubicación: {distance} de El Perelló, {seaDistance} del mar."
   },
   "common": {
     "readMore": "Leer Más",

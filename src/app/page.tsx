@@ -30,7 +30,8 @@ export default function Home() {
           quickFacts={[
             t('hero.quickFacts.selfSufficient'),
             t('hero.quickFacts.noNeighbors'),
-            t('hero.quickFacts.peaceNature')
+            t('hero.quickFacts.peaceNature'),
+            t('hero.quickFacts.petfriendly'),
           ]}
         />
       </section>
@@ -130,12 +131,7 @@ export default function Home() {
             {t('cta.subtitle')}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <a href={`tel:${siteContent.contact.phone}`}>
-              <Button size="lg" variant="secondary">
-                {siteContent.contact.phone}
-              </Button>
-            </a>
-            <a href={`https://wa.me/${siteContent.contact.whatsapp.replace('+', '').replace(' ', '')}`} target="_blank" rel="noopener noreferrer">
+            <a href={`https://wa.me/${siteContent.contact.whatsapp.replace(/\s/g, '').replace('+', '')}`} target="_blank" rel="noopener noreferrer">
               <Button
                 size="lg"
                 variant="outline"

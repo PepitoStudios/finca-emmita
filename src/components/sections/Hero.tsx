@@ -4,7 +4,8 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { useState, useEffect, useRef } from 'react';
 import { useTranslations } from 'next-intl';
 import Button from '@/components/ui/Button';
-import { ChevronDown, Leaf, VolumeX, Wifi, Sparkles } from 'lucide-react';
+import { ChevronDown, Leaf, VolumeX, Wifi, Sparkles, Sprout, Dog } from 'lucide-react';
+import { useIsMobile } from "@/hooks/useIsMobile";
 
 interface HeroProps {
   title: string;
@@ -32,6 +33,7 @@ export default function Hero({
   const { scrollY } = useScroll();
   const y = useTransform(scrollY, [0, 500], [0, 150]);
   const opacity = useTransform(scrollY, [0, 300], [1, 0]);
+  const isMobile = useIsMobile();
 
   // Auto-rotate carousel every 5 seconds
   useEffect(() => {
@@ -49,7 +51,7 @@ export default function Hero({
     element?.scrollIntoView({ behavior: 'smooth' });
   };
 
-  const quickFactIcons = [Leaf, VolumeX, Wifi];
+  const quickFactIcons = [Sprout, VolumeX, Leaf, Dog];
 
   return (
     <section
@@ -100,9 +102,9 @@ export default function Hero({
               className="flex items-center gap-2 bg-white/95 backdrop-blur-sm px-4 py-2 rounded-full shadow-lg"
             >
               <Icon className="w-4 h-4 text-nature-600" />
-              <span className="text-sm font-medium text-earth-800 whitespace-nowrap">
+              {!isMobile && (<span className="text-sm font-medium text-earth-800 whitespace-nowrap">
                 {fact}
-              </span>
+              </span>)}
             </motion.div>
           );
         })}
@@ -147,14 +149,14 @@ export default function Hero({
           </motion.p>
 
           {/* Main Headline */}
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight drop-shadow-2xl">
+          <h1 className="text-4xl md:text-6xl lg:text-10xl font-bold text-white mb-6 leading-tight drop-shadow-2xl">
             {title}
           </h1>
 
-          {/* Subtitle */}
+          {/* Subtitle 
           <p className="text-lg md:text-xl lg:text-2xl text-white/95 mb-10 max-w-3xl mx-auto leading-relaxed drop-shadow-lg">
             {subtitle}
-          </p>
+          </p>*/}
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">

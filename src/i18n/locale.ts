@@ -40,6 +40,7 @@ export async function getLocale(): Promise<Locale> {
  * Set user's locale preference in cookie
  */
 export async function setLocale(locale: Locale): Promise<void> {
+  debugger
   if (!locales.includes(locale)) {
     throw new Error(`Invalid locale: ${locale}`);
   }

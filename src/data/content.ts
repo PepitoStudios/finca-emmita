@@ -4,7 +4,7 @@ export const siteContent = {
   location: {
     address: 'Valle near El Perello',
     city: 'El Perello',
-    region: 'Tarragona, Spain',
+    region: 'El Perelló (Tarragona), Spain',
     coordinates: {
       lat: 40.8567,
       lng: 0.7333,

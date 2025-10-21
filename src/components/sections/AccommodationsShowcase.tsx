@@ -49,7 +49,7 @@ export default function AccommodationsShowcase() {
           ))}
         </div>
 
-        {/* Comparison CTA */}
+        {/* Comparison CTA 
         <motion.div
           initial={fadeInUp.initial}
           whileInView={fadeInUp.whileInView}
@@ -87,7 +87,7 @@ export default function AccommodationsShowcase() {
               </Button>
             </a>
           </div>
-        </motion.div>
+        </motion.div>*/}
       </div>
     </section>
   );

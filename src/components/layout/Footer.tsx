@@ -1,6 +1,5 @@
 'use client';
 
-import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 import { Phone, Mail, Instagram, Facebook, MapPin } from 'lucide-react';
 import { siteContent } from '@/data/content';

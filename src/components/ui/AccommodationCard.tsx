@@ -6,7 +6,6 @@ import { useTranslations } from 'next-intl';
 import { Check, Users, Home, Euro, ArrowRight, ChevronDown, ChevronUp, ChevronRight, ChevronLeft } from 'lucide-react';
 import Button from '@/components/ui/Button';
 import type { Accommodation } from '@/lib/types';
-import { g } from 'framer-motion/client';
 
 interface AccommodationCardProps {
   accommodation: Accommodation;

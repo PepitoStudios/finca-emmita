@@ -39,7 +39,7 @@ export const siteContent = {
     {
       title: '100% Self-Sufficient',
       description: 'Solar powered, rainwater collection, and grey water recycling',
-      icon: 'leaf',
+      icon: 'sprout',
     },
     {
       title: 'Peace & Quiet',
@@ -54,7 +54,7 @@ export const siteContent = {
     {
       title: 'Pet Friendly',
       description: 'Pets travel for free',
-      icon: 'dog',
+      icon: 'paw-print',
     },
   ],
   bookingInfo: {

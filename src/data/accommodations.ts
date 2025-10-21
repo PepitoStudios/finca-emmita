@@ -126,12 +126,6 @@ export const accommodations: Accommodation[] = [
         width: 1200,
         height: 900,
       },
-      {
-        url: 'https://img.alohacamp.com/kHCSo3iF61tbHSWl3289CB5xIPxi9Lt0UyTBHvySexc/resize:fit:1920:1246/enlarge:1/czM6Ly9hbG9oYS5pbWFnZXMvcHJvcGVydGllcy9hZmZhNmUyMzM4Y2FlOGI2MWE1OGIxMTA3MTM4Nzg1Y2E1NTM1OWQ1LmpwZw',
-        alt: 'Casa Luna - Shared pool area',
-        width: 1200,
-        height: 900,
-      },
     ],
     amenities: [
       '2 bedrooms',

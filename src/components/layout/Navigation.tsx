@@ -1,8 +1,6 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Phone, Mail } from 'lucide-react';
@@ -23,7 +21,6 @@ export default function Navigation({ isScrolled }: NavigationProps) {
     }
     return 'hero';
   });
-  const pathname = usePathname();
   const t = useTranslations('navigation');
 
   const navigationItems = [
@@ -38,7 +35,16 @@ export default function Navigation({ isScrolled }: NavigationProps) {
     e.preventDefault();
     const element = document.querySelector(href);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      // Get header height to offset scroll position
+      const headerHeight = 80; // Approximate header height
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+      
       window.history.pushState(null, '', href);
 
       // Focus management for accessibility
@@ -93,7 +99,7 @@ export default function Navigation({ isScrolled }: NavigationProps) {
   }, []);
 
   return (
-    <nav className="relative z-50">
+    <nav className="relative z-50 flex-shrink-0">
       {/* Desktop Navigation */}
       <div className="hidden lg:flex items-center justify-center space-x-2">
         {navigationItems.map((item) => {
@@ -128,7 +134,7 @@ export default function Navigation({ isScrolled }: NavigationProps) {
             </a>
           );
         })}
-        <LanguageSwitcher />
+        <LanguageSwitcher isScrolled={isScrolled} />
       </div>
 
       {/* Mobile Menu Button - Improved Touch Target */}
@@ -173,10 +179,17 @@ export default function Navigation({ isScrolled }: NavigationProps) {
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'spring', damping: 30, stiffness: 300 }}
-              className="lg:hidden fixed top-0 right-0 bottom-0 w-full max-w-sm bg-white shadow-2xl z-50 flex flex-col"
+              className="lg:hidden fixed inset-y-0 right-0 w-full max-w-sm bg-white shadow-2xl z-50 flex flex-col will-change-transform"
+              style={{ 
+                WebkitBackfaceVisibility: 'hidden',
+                backfaceVisibility: 'hidden',
+                transform: 'translate3d(0, 0, 0)',
+                height: '100dvh', // Dynamic viewport height for mobile browsers
+                maxHeight: '100vh'
+              }}
             >
               {/* Header */}
-              <div className="flex items-center justify-between p-6 border-b border-earth-100">
+              <div className="flex items-center justify-between p-6 border-b border-earth-100 bg-white">
                 <div>
                   <p className="text-sm text-earth-600">{t('menu')}</p>
                   <p className="text-xl font-bold text-nature-700">Finca Emmita</p>
@@ -191,7 +204,7 @@ export default function Navigation({ isScrolled }: NavigationProps) {
               </div>
 
               {/* Navigation Links - Large Touch Targets */}
-              <div className="flex-1 overflow-y-auto py-6">
+              <div className="flex-1 overflow-y-auto py-6 bg-white">
                 {navigationItems.map((item, index) => {
                   const isActive = activeSection === item.href.replace('#', '');
                   return (

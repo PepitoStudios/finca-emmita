@@ -93,7 +93,7 @@ export default function LocationSection() {
           >
             <div className="bg-white rounded-2xl shadow-xl overflow-hidden h-full">
               {/* Map Container */}
-              <div className="relative aspect-square lg:aspect-auto lg:h-full min-h-[400px] bg-gradient-to-br from-earth-100 to-nature-100">
+              <div className="relative aspect-square lg:aspect-auto lg:h-full min-h-[300px] bg-gradient-to-br from-earth-100 to-nature-100">
                 {/* Map Placeholder */}
                 <div className="absolute inset-0 flex flex-col items-center justify-center p-8 text-center">
                   <div className="w-20 h-20 mb-4 rounded-full bg-nature-600 flex items-center justify-center">

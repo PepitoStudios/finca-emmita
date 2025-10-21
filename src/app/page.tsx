@@ -3,12 +3,11 @@
 import { useTranslations } from 'next-intl';
 import Hero from '@/components/sections/Hero';
 import AccommodationsShowcase from '@/components/sections/AccommodationsShowcase';
-import TestimonialsSection from '@/components/sections/TestimonialsSection';
 import HostProfile from '@/components/sections/HostProfile';
 import LocationSection from '@/components/sections/LocationSection';
 import Button from '@/components/ui/Button';
 import { Card, CardContent } from '@/components/ui/Card';
-import { Leaf, VolumeX, Wifi, Dog } from 'lucide-react';
+import { VolumeX, Wifi, Sprout, PawPrint } from 'lucide-react';
 import { siteContent } from '@/data/content';
 import { accommodations } from '@/data/accommodations';
 
@@ -19,9 +18,9 @@ export default function Home() {
   const heroImages = accommodations.flatMap(acc => acc.images.map(img => img.url));
 
   return (
-    <div>
+    <div className="w-full max-w-full overflow-x-hidden">
       {/* Hero Section */}
-      <section id="hero">
+      <section id="hero" className="w-full max-w-full">
         <Hero
           title={t('hero.title')}
           subtitle={t('hero.subtitle')}
@@ -30,7 +29,6 @@ export default function Home() {
           quickFacts={[
             t('hero.quickFacts.selfSufficient'),
             t('hero.quickFacts.noNeighbors'),
-            t('hero.quickFacts.peaceNature'),
             t('hero.quickFacts.petfriendly'),
           ]}
         />
@@ -59,7 +57,7 @@ export default function Home() {
             <Card className="text-center">
               <CardContent className="pt-8">
                 <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-nature-100 flex items-center justify-center">
-                  <Leaf className="w-8 h-8 text-nature-600" />
+                  <Sprout className="w-8 h-8 text-nature-600" />
                 </div>
                 <h3 className="text-xl font-semibold text-earth-800 mb-2">{t('features.selfSufficient.title')}</h3>
                 <p className="text-earth-600">
@@ -95,7 +93,7 @@ export default function Home() {
             <Card className="text-center">
               <CardContent className="pt-8">
                 <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-nature-100 flex items-center justify-center">
-                  <Dog className="w-8 h-8 text-nature-600" />
+                  <PawPrint className="w-8 h-8 text-nature-600" />
                 </div>
                 <h3 className="text-xl font-semibold text-earth-800 mb-2">{t('features.petFriendly.title')}</h3>
                 <p className="text-earth-600">

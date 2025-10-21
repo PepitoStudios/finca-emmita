@@ -5,7 +5,6 @@ import { getLocale } from '@/i18n/locale';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import WhatsAppButton from '@/components/layout/WhatsAppButton';
-import BookingWidget from '@/components/ui/BookingWidget';
 
 export async function generateMetadata() {
   const locale = await getLocale();
@@ -73,11 +72,11 @@ export default async function RootLayout({
   const messages = await getMessages({ locale });
 
   return (
-    <html lang={locale}>
-      <body className="antialiased min-h-screen flex flex-col">
+    <html lang={locale} className="w-full max-w-full overflow-x-hidden">
+      <body className="antialiased min-h-screen flex flex-col overflow-x-hidden w-full max-w-full">
         <NextIntlClientProvider locale={locale} messages={messages}>
           <Header />
-          <main className="flex-grow">{children}</main>
+          <main className="flex-grow w-full max-w-full">{children}</main>
           <Footer />
           <WhatsAppButton />
           {/* <BookingWidget /> */}

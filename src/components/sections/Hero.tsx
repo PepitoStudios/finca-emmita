@@ -4,7 +4,7 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { useState, useEffect, useRef } from 'react';
 import { useTranslations } from 'next-intl';
 import Button from '@/components/ui/Button';
-import { ChevronDown, Leaf, VolumeX, Wifi, Sparkles, Sprout, Dog } from 'lucide-react';
+import { ChevronDown, VolumeX, Sparkles, Sprout, PawPrint } from 'lucide-react';
 import { useIsMobile } from "@/hooks/useIsMobile";
 
 interface HeroProps {
@@ -19,6 +19,8 @@ interface HeroProps {
 
 export default function Hero({
   title,
+  // subtitle is part of the interface but not currently used
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   subtitle,
   ctaText,
   ctaLink = '#content',
@@ -51,12 +53,12 @@ export default function Hero({
     element?.scrollIntoView({ behavior: 'smooth' });
   };
 
-  const quickFactIcons = [Sprout, VolumeX, Leaf, Dog];
+  const quickFactIcons = [Sprout, VolumeX, PawPrint];
 
   return (
     <section
       ref={heroRef}
-      className="relative h-screen w-full flex items-center justify-center overflow-hidden"
+      className="relative h-screen w-full max-w-full flex items-center justify-center overflow-hidden"
       aria-label="Hero section"
     >
       {/* Background Image Carousel with Parallax */}

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useTranslations } from 'next-intl';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Star, Quote } from 'lucide-react';
@@ -14,18 +14,18 @@ export default function TestimonialsSection() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(0);
 
+  const nextTestimonial = useCallback(() => {
+    setDirection(1);
+    setCurrentIndex((prev) => (prev + 1) % testimonials.length);
+  }, [testimonials.length]);
+
   // Auto-rotate every 7 seconds
   useEffect(() => {
     const interval = setInterval(() => {
       nextTestimonial();
     }, 7000);
     return () => clearInterval(interval);
-  }, [currentIndex]);
-
-  const nextTestimonial = () => {
-    setDirection(1);
-    setCurrentIndex((prev) => (prev + 1) % testimonials.length);
-  };
+  }, [nextTestimonial]);
 
   const prevTestimonial = () => {
     setDirection(-1);

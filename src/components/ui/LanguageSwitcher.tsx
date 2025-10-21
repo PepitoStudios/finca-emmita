@@ -1,12 +1,13 @@
 'use client';
 
-import { useLocale, useTranslations } from 'next-intl';
+import { useLocale } from 'next-intl';
 import { useRouter } from 'next/navigation';
 import { Globe } from 'lucide-react';
 import { useState, useTransition } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { type Locale } from '@/i18n/config';
 import { setLocale } from '@/i18n/locale';
+import { cn } from '@/lib/utils/cn';
 
 const languages = [
   { code: 'es' as Locale, name: 'Español', flag: '🇪🇸' },
@@ -14,10 +15,15 @@ const languages = [
   { code: 'fr' as Locale, name: 'Français', flag: '🇫🇷' },
 ];
 
-export default function LanguageSwitcher({ isMobile = false }: { isMobile?: boolean }) {
+export default function LanguageSwitcher({ 
+  isMobile = false, 
+  isScrolled = false 
+}: { 
+  isMobile?: boolean;
+  isScrolled?: boolean;
+}) {
   const locale = useLocale();
   const router = useRouter();
-  const t = useTranslations('language');
   const [isOpen, setIsOpen] = useState(false);
   const [isPending, startTransition] = useTransition();
 
@@ -33,22 +39,29 @@ export default function LanguageSwitcher({ isMobile = false }: { isMobile?: bool
 
   if (isMobile) {
     return (
-      <div className="space-y-2">
+      <div className="flex items-center justify-center gap-3">
         {languages.map((lang) => (
           <button
             key={lang.code}
             onClick={() => switchLanguage(lang.code)}
             disabled={isPending}
-            className={`w-full flex items-center gap-3 px-6 py-4 rounded-xl transition-all active:scale-98 disabled:opacity-50 ${
+            className={cn(
+              'relative flex items-center justify-center w-12 h-12 rounded-xl transition-all active:scale-95 disabled:opacity-50',
               lang.code === locale
-                ? 'bg-nature-600 text-white'
-                : 'bg-white hover:bg-earth-50 text-earth-700'
-            }`}
+                ? 'bg-nature-200 shadow-md scale-110'
+                : 'bg-white hover:bg-earth-50 border-2 border-earth-200 hover:border-nature-300'
+            )}
+            aria-label={`Switch to ${lang.name}`}
+            title={lang.name}
           >
-            <span className="text-2xl">{lang.flag}</span>
-            <span className="font-medium text-lg">{lang.name}</span>
+            <span className={cn(
+              'transition-all',
+              lang.code === locale ? 'text-3xl' : 'text-2xl'
+            )}>
+              {lang.flag}
+            </span>
             {isPending && lang.code !== locale && (
-              <span className="ml-auto animate-spin">⏳</span>
+              <span className="absolute -top-1 -right-1 text-xs animate-spin">⏳</span>
             )}
           </button>
         ))}
@@ -61,12 +74,17 @@ export default function LanguageSwitcher({ isMobile = false }: { isMobile?: bool
     <div className="relative">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-2 px-4 py-2 rounded-lg hover:bg-earth-50 transition-colors"
+        className={cn(
+          'relative px-5 py-2.5 text-sm font-medium transition-all duration-300 rounded-lg flex items-center gap-2',
+          isScrolled
+            ? 'text-earth-700 hover:text-nature-600 hover:bg-earth-50'
+            : 'text-white hover:text-earth-100 hover:bg-white/10'
+        )}
         aria-label="Change language"
         aria-expanded={isOpen}
       >
-        <Globe className="w-5 h-5 text-earth-700" />
-        <span className="font-medium text-sm text-earth-700">{currentLanguage.code.toUpperCase()}</span>
+        <Globe className="w-4 h-4" />
+        <span>{currentLanguage.code.toUpperCase()}</span>
       </button>
 
       <AnimatePresence>

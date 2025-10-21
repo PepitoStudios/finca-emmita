@@ -2,7 +2,6 @@
 
 import { motion } from 'framer-motion';
 import { useTranslations } from 'next-intl';
-import Button from '@/components/ui/Button';
 import AccommodationCard from '@/components/ui/AccommodationCard';
 import { accommodations } from '@/data/accommodations';
 

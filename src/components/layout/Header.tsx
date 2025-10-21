@@ -22,14 +22,14 @@ export default function Header() {
   return (
     <header
       className={cn(
-        'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
+        'fixed top-0 left-0 right-0 z-50 transition-all duration-300 w-full',
         isScrolled
           ? 'bg-white/95 backdrop-blur-sm shadow-md py-3'
           : 'bg-transparent py-4'
       )}
     >
-      <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between">
+      <div className="container mx-auto px-4 max-w-full">
+        <div className="flex items-center justify-between gap-4">
           {/* Logo */}
           <Link href="/" className="flex-shrink-0">
             <div className="flex flex-col">

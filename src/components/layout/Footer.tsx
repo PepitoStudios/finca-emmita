@@ -154,10 +154,18 @@ export default function Footer() {
 
         {/* Bottom Bar */}
         <div className="mt-12 pt-8 border-t border-earth-700">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+          <div className="flex flex-col md:flex-row justify-between items-start gap-6 md:gap-4">
             <p className="text-sm text-earth-300">
               {t('footer.copyright', { year: new Date().getFullYear() })}
             </p>
+            <div className="text-sm text-earth-300 md:text-right">
+              <p className="mb-1 md:mb-0">
+                {t('footer.touristLicense')}:
+              </p>
+              <p className="text-xs md:text-sm break-all md:break-normal">
+                {siteContent.touristLicense}
+              </p>
+            </div>
           </div>
         </div>
       </div>

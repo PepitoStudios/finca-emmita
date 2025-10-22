@@ -1,6 +1,7 @@
 export const siteContent = {
   siteName: 'Finca Emmita',
   tagline: 'Casas Rurales',
+  touristLicense: 'ESFCTU0000430200008690200000000000000000HUTTE-0022085',
   location: {
     address: 'Valle near El Perello',
     city: 'El Perello',

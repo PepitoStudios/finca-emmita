@@ -57,7 +57,7 @@
     "weekday": "Weekday",
     "weekend": "Weekend",
     "highSeason": "High Season",
-    "pets": "Pets (per stay and pet)",
+    "pets": "Pets (per stay per pet)",
     "cleaning": "Cleaning fee",
     "from": "From",
     "perNight": "/night",
@@ -78,6 +78,7 @@
       "title": "La Casita",
       "shortDescription": "Wooden house with well-equipped kitchen, bedroom, living room with sofa and private terrace.",
       "longDescription": "La Casita is a newly built wooden house offering a main room with a well-equipped small kitchen, dining area, sofa, pellet stove and a separate double bedroom. The bathroom has a large shower. There is a nice terrace with a table, chairs and sunloungers.",
+      "badge": "July, August, San Juan, Christmas and Easter",
       "amenities": {
         "kitchen": "Well-equipped kitchen",
         "livingRoom": "Living room with sofa bed",
@@ -97,6 +98,7 @@
       "title": "La Olivita",
       "shortDescription": "Stone house with mezzanine sleeping loft, wood burner, and terrace with BBQ.",
       "longDescription": "La Olivita is a traditional country house offering a well-equipped small kitchen, a living room with a sofa and wood burner, the mezzanine has a double bed and is accessible by stairs. The bathroom has a large shower. There is a nice terrace with a table and chairs, sunloungers and BBQ (not used from June to September due to fire risks and it is replaced by a plancha)",
+      "badge": "July, August, San Juan, Christmas and Easter",
       "amenities": {
         "kitchen": "Well-equipped kitchen",
         "livingRoom": "Living room with sofa bed",
@@ -116,6 +118,7 @@
       "title": "Casa Luna",
       "shortDescription": "Wooden house with 2 en-suite bedrooms, cozy porch and wood stove.",
       "longDescription": "Casa Luna is a wooden house, built 20 years ago, completely self-sufficient with solar energy and rainwater collection. With 2 en-suite bedrooms, it can accommodate up to 4 guests. Enjoy the outdoor terrace with table, sofa and sunloungers.",
+      "badge": "July, August, San Juan, Christmas and Easter",
       "amenities": {
         "bedrooms": "2 bedrooms",
         "bathrooms": "2 bathrooms (one with composting toilet)",
@@ -251,7 +254,8 @@
     "followUs": "Follow Us",
     "contactEmma": "Contact Emma",
     "copyright": "© {year} Finca Emmita",
-    "location": "Location: {distance} from El Perelló, {seaDistance} from the sea."
+    "location": "Location: {distance} from El Perelló, {seaDistance} from the sea.",
+    "touristLicense": "Rental Registration No."
   },
   "common": {
     "readMore": "Read More",

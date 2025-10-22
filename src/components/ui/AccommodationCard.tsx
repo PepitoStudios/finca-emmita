@@ -1,8 +1,9 @@
 'use client';
 
 import { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslations } from 'next-intl';
+import Image from 'next/image';
 import { Check, Users, Home, Euro, ArrowRight, ChevronDown, ChevronUp, ChevronRight, ChevronLeft, Maximize2 } from 'lucide-react';
 import Button from '@/components/ui/Button';
 import ImageLightbox from '@/components/ui/ImageLightbox';
@@ -68,6 +69,18 @@ export default function AccommodationCard({ accommodation, index }: Accommodatio
     window.open(`https://wa.me/34681315149?text=${message}`, '_blank');
   }
 
+  const handleDragEnd = (_event: MouseEvent | TouchEvent | PointerEvent, info: { offset: { x: number; y: number } }) => {
+    const swipeThreshold = 50;
+    
+    if (info.offset.x > swipeThreshold) {
+      // Swipe right - previous image
+      previousImage();
+    } else if (info.offset.x < -swipeThreshold) {
+      // Swipe left - next image
+      nextImage();
+    }
+  }
+
   return (
     <div
       className={`grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center ${isEven ? '' : 'lg:flex-row-reverse'
@@ -86,25 +99,29 @@ export default function AccommodationCard({ accommodation, index }: Accommodatio
           <motion.div
             className="absolute inset-0 cursor-pointer z-10 bg-earth-100"
             onClick={() => setIsLightboxOpen(true)}
+            drag="x"
+            dragConstraints={{ left: 0, right: 0 }}
+            dragElastic={0.2}
+            onDragEnd={handleDragEnd}
           >
-            {accommodation.images.map((image, index) => (
+            <AnimatePresence mode="wait">
               <motion.div
-                key={image.url}
+                key={currentImageIndex}
                 className="absolute inset-0 flex items-center justify-center"
-                initial={{ opacity: 0 }}
-                animate={{
-                  opacity: currentImageIndex === index ? 1 : 0,
-                  scale: currentImageIndex === index ? 1 : 1.05
-                }}
-                transition={{ duration: 1.5, ease: 'easeInOut' }}
+                initial={{ opacity: 0, x: 100 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -100 }}
+                transition={{ duration: 0.2, ease: 'easeInOut' }}
               >
-                <img
-                  src={image.url}
-                  alt={image.alt}
-                  className="w-full h-full object-contain"
+                <Image
+                  src={accommodation.images[currentImageIndex].url}
+                  alt={accommodation.images[currentImageIndex].alt}
+                  fill
+                  className="object-contain"
+                  sizes="(max-width: 768px) 100vw, 50vw"
                 />
               </motion.div>
-            ))}
+            </AnimatePresence>
           </motion.div>
 
           {/* Expand/Fullscreen Icon - Bottom Right - Hidden on mobile */}
@@ -259,8 +276,20 @@ export default function AccommodationCard({ accommodation, index }: Accommodatio
               €{accommodation.pricing.weekend}
             </span>
           </div>
-          <div className="flex justify-between items-center mb-3">
-            <span className="text-earth-600">{t('highSeason')}</span>
+          <div className="flex justify-between items-start mb-3">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3">
+              <span className="text-earth-600">{t('highSeason')}</span>
+              {accommodation.pricing.badge && (
+                <span className={`inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium w-fit ${
+                  accommodation.pricing.badge.color === 'amber' ? 'bg-amber-100 text-amber-800' :
+                  accommodation.pricing.badge.color === 'green' ? 'bg-green-100 text-green-800' :
+                  accommodation.pricing.badge.color === 'blue' ? 'bg-blue-100 text-blue-800' :
+                  'bg-purple-100 text-purple-800'
+                }`}>
+                  {t(`${accommodationKey}.badge`)}
+                </span>
+              )}
+            </div>
             <span className="text-2xl font-bold text-nature-700">
               €{accommodation.pricing.highSeason}
             </span>

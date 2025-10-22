@@ -28,6 +28,9 @@ export interface Pricing {
   august?: number;
   cleaning: number;
   pets?: number;
+  badge?: {
+    color: 'amber' | 'green' | 'blue' | 'purple';
+  };
 }
 
 export interface Service {

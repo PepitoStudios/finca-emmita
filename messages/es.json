@@ -78,6 +78,7 @@
       "title": "La Casita",
       "shortDescription": "Cabaña de madera con cocina bien equipada, habitación, sala con sofá y terraza privada.",
       "longDescription": "La Casita es una cabaña de madera recién construida que ofrece una sala principal con pequeña cocina bien equipada, comedor, sofá, estufa de pellets y un dormitorio doble separado. El baño tiene una ducha grande. Hay una bonita terraza con mesa, sillas y tumbonas.",
+      "badge": "Julio, Agosto, San Juan, Navidad y Semana Santa",
       "amenities": {
         "kitchen": "Cocina bien equipada",
         "livingRoom": "Sala de estar con sofá cama",
@@ -97,6 +98,7 @@
       "title": "La Olivita",
       "shortDescription": "Casa de piedra con altillo para dormir, estufa de leña y terraza con BBQ.",
       "longDescription": "La Olivita es una casa de campo tradicional y ofrece una pequeña cocina bien equipada, una sala de estar con sofá y estufa de leña, el altillo tiene una cama doble y es accesible por escaleras. El baño tiene una ducha grande. Hay una bonita terraza con mesa y sillas, tumbonas y BBQ (no se usa de junio a septiembre por riesgo de incendios y se reemplaza por una plancha)",
+      "badge": "Julio, Agosto, San Juan, Navidad y Semana Santa",
       "amenities": {
         "kitchen": "Cocina bien equipada",
         "livingRoom": "Sala de estar con sofá cama",
@@ -116,6 +118,7 @@
       "title": "Casa Luna",
       "shortDescription": "Casa de madera con 2 habitaciones con baño en suite, porche acogedor y estufa de leña.",
       "longDescription": "Casa Luna es una casa de madera, construida hace 20 años completamente autosuficiente con energía solar y recolección de agua de lluvia. Con 2 habitaciones con baños en suite, puede alojar hasta 4 huéspedes. Disfruta de la terraza exterior con mesa, sofá y tumbonas.",
+      "badge": "Julio, Agosto, San Juan, Navidad y Semana Santa",
       "amenities": {
         "bedrooms": "2 habitaciones",
         "bathrooms": "2 baños (uno con inodoro de compostaje)",
@@ -251,7 +254,8 @@
     "followUs": "Síguenos",
     "contactEmma": "Contactar a Emma",
     "copyright": "© {year} Finca Emmita",
-    "location": "Ubicación: {distance} de El Perelló, {seaDistance} del mar."
+    "location": "Ubicación: {distance} de El Perelló, {seaDistance} del mar.",
+    "touristLicense": "Nº Registro de Alquiler"
   },
   "common": {
     "readMore": "Leer Más",

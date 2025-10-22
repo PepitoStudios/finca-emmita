@@ -48,6 +48,22 @@ export default function ImageLightbox({
     [isOpen, onClose, onNext, onPrevious]
   );
 
+  // Handle drag/swipe
+  const handleDragEnd = useCallback(
+    (_event: MouseEvent | TouchEvent | PointerEvent, info: { offset: { x: number; y: number } }) => {
+      const swipeThreshold = 50;
+      
+      if (info.offset.x > swipeThreshold) {
+        // Swipe right - previous image
+        onPrevious();
+      } else if (info.offset.x < -swipeThreshold) {
+        // Swipe left - next image
+        onNext();
+      }
+    },
+    [onNext, onPrevious]
+  );
+
   useEffect(() => {
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
@@ -141,6 +157,10 @@ export default function ImageLightbox({
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.9, opacity: 0 }}
             transition={{ duration: 0.3 }}
+            drag="x"
+            dragConstraints={{ left: 0, right: 0 }}
+            dragElastic={0.2}
+            onDragEnd={handleDragEnd}
           >
             <AnimatePresence mode="wait">
               <motion.img
@@ -151,7 +171,7 @@ export default function ImageLightbox({
                 initial={{ opacity: 0, x: 100 }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -100 }}
-                transition={{ duration: 0.3 }}
+                transition={{ duration: 0.1 }}
                 draggable={false}
               />
             </AnimatePresence>

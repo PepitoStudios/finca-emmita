@@ -12,10 +12,34 @@ const PHOTOS_DIR = path.join(__dirname, '../src/assets/photos');
 const OUTPUT_FILE = path.join(__dirname, '../public/images-manifest.json');
 
 const FOLDERS = ['hero', 'la-casita', 'la-olivita', 'casa-luna'];
-const IMAGE_EXTENSIONS = ['.jpg', '.jpeg', '.png', '.webp'];
+const IMAGE_EXTENSIONS = ['.jpg', '.jpeg', '.png', '.webp', '.avif'];
+
+/**
+ * Normalize filename by removing accents and special characters
+ * @param {string} filename - The filename to normalize
+ * @returns {string} - Normalized filename
+ */
+function normalizeFilename(filename) {
+  // Normalize unicode characters (decompose accented characters)
+  const normalized = filename.normalize('NFD');
+  
+  // Remove diacritical marks (accents)
+  const withoutAccents = normalized.replace(/[\u0300-\u036f]/g, '');
+  
+  // Replace spaces with hyphens and remove special characters
+  // Keep only: letters, numbers, hyphens, underscores, dots
+  const cleaned = withoutAccents.replace(/[^a-zA-Z0-9.\-_]/g, '-');
+  
+  // Remove multiple consecutive hyphens
+  const final = cleaned.replace(/-+/g, '-');
+  
+  return final;
+}
 
 function getImageFiles(folder) {
-  const folderPath = path.join(PHOTOS_DIR, folder);
+  // Read from public/photos instead of src/assets/photos
+  // This ensures we get the normalized filenames
+  const folderPath = path.join(__dirname, '../public/photos', folder);
   
   if (!fs.existsSync(folderPath)) {
     return [];
@@ -53,17 +77,62 @@ function generateManifest() {
   });
 }
 
-// Crear symlink de photos en public si no existe
-const publicPhotosLink = path.join(__dirname, '../public/photos');
+// Copy photos to public instead of symlink (for Vercel compatibility)
+const publicPhotosDir = path.join(__dirname, '../public/photos');
 const photosSource = path.join(__dirname, '../src/assets/photos');
 
-try {
-  if (!fs.existsSync(publicPhotosLink)) {
-    fs.symlinkSync(photosSource, publicPhotosLink, 'dir');
-    console.log('✅ Symlink creado: public/photos -> src/assets/photos');
+function copyDirectory(src, dest) {
+  if (!fs.existsSync(dest)) {
+    fs.mkdirSync(dest, { recursive: true });
   }
+  
+  const entries = fs.readdirSync(src, { withFileTypes: true });
+  
+  for (const entry of entries) {
+    const srcPath = path.join(src, entry.name);
+    
+    if (entry.isDirectory()) {
+      // Recursively copy subdirectories
+      const destPath = path.join(dest, entry.name);
+      copyDirectory(srcPath, destPath);
+    } else {
+      // Only copy image files (skip README.md, index.ts, .gitkeep, etc.)
+      const ext = path.extname(entry.name).toLowerCase();
+      if (IMAGE_EXTENSIONS.includes(ext)) {
+        // Normalize filename to remove accents and special characters
+        const normalizedName = normalizeFilename(entry.name);
+        const destPath = path.join(dest, normalizedName);
+        
+        // Log if filename was changed
+        if (normalizedName !== entry.name) {
+          console.log(`  📝 Normalized: ${entry.name} → ${normalizedName}`);
+        }
+        
+        fs.copyFileSync(srcPath, destPath);
+      }
+    }
+  }
+}
+
+try {
+  // Remove old symlink if exists
+  if (fs.existsSync(publicPhotosDir)) {
+    const stats = fs.lstatSync(publicPhotosDir);
+    if (stats.isSymbolicLink()) {
+      fs.unlinkSync(publicPhotosDir);
+      console.log('🗑️  Symlink anterior eliminado');
+    } else {
+      // Remove existing directory to start fresh
+      fs.rmSync(publicPhotosDir, { recursive: true, force: true });
+      console.log('🗑️  Directorio anterior eliminado');
+    }
+  }
+  
+  // Copy photos to public
+  copyDirectory(photosSource, publicPhotosDir);
+  console.log('✅ Fotos copiadas: public/photos/');
 } catch (error) {
-  console.log('ℹ️  No se pudo crear symlink (puede que ya exista o requiera permisos)');
+  console.log('⚠️  Error al copiar fotos:', error.message);
 }
 
 // Ejecutar

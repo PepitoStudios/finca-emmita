@@ -57,7 +57,7 @@
     "weekday": "En semaine",
     "weekend": "Week-end",
     "highSeason": "Haute saison",
-    "pets": "Animaux (par séjour et animal)",
+    "pets": "Animaux (par séjour et par animal)",
     "cleaning": "Frais de nettoyage",
     "from": "À partir de",
     "perNight": "/nuit",
@@ -78,6 +78,7 @@
       "title": "La Casita",
       "shortDescription": "Maison en bois avec cuisine bien équipée, chambre, salon avec canapé et terrasse privée.",
       "longDescription": "La Casita est une maison en bois récemment construite offrant une pièce principale avec une petite cuisine bien équipée, coin repas, canapé, poêle à granulés et une chambre double séparée. La salle de bain dispose d'une grande douche. Il y a une belle terrasse avec une table, des chaises et des chaises longues.",
+      "badge": "Juillet, Août, San Juan, Noël et Pâques",
       "amenities": {
         "kitchen": "Cuisine bien équipée",
         "livingRoom": "Salon avec canapé-lit",
@@ -97,6 +98,7 @@
       "title": "La Olivita",
       "shortDescription": "Maison en pierre avec mezzanine pour dormir, poêle à bois et terrasse avec BBQ.",
       "longDescription": "La Olivita est une maison de campagne traditionnelle offrant une petite cuisine bien équipée, un salon avec un canapé et un poêle à bois, la mezzanine dispose d'un lit double et est accessible par des escaliers. La salle de bain dispose d'une grande douche. Il y a une belle terrasse avec une table et des chaises, des chaises longues et un BBQ (non utilisé de juin à septembre en raison des risques d'incendie et remplacé par une plancha)",
+      "badge": "Juillet, Août, San Juan, Noël et Pâques",
       "amenities": {
         "kitchen": "Cuisine bien équipée",
         "livingRoom": "Salon avec canapé-lit",
@@ -116,6 +118,7 @@
       "title": "Casa Luna",
       "shortDescription": "Maison en bois avec 2 chambres avec salle de bain privative, porche confortable et poêle à bois.",
       "longDescription": "Casa Luna est une maison en bois, construite il y a 20 ans, complètement autosuffisante avec énergie solaire et collecte d'eau de pluie. Avec 2 chambres avec salles de bain privatives, elle peut accueillir jusqu'à 4 personnes. Profitez de la terrasse extérieure avec table, canapé et chaises longues.",
+      "badge": "Juillet, Août, San Juan, Noël et Pâques",
       "amenities": {
         "bedrooms": "2 chambres",
         "bathrooms": "2 salles de bain (une avec toilettes à compost)",
@@ -251,7 +254,8 @@
     "followUs": "Suivez-nous",
     "contactEmma": "Contacter Emma",
     "copyright": "© {year} Finca Emmita",
-    "location": "Emplacement: {distance} d'El Perelló, {seaDistance} de la mer."
+    "location": "Emplacement: {distance} d'El Perelló, {seaDistance} de la mer.",
+    "touristLicense": "Nº d'Enregistrement Location"
   },
   "common": {
     "readMore": "Lire Plus",

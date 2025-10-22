@@ -44,6 +44,9 @@ export const accommodations: Accommodation[] = [
       highSeason: 95, // July, August, Christmas, Easter
       cleaning: 35,
       pets: 10,
+      badge: {
+        color: 'amber'
+      }
     },
     featured: true,
     order: 1,
@@ -87,6 +90,9 @@ export const accommodations: Accommodation[] = [
       highSeason: 100,
       cleaning: 35,
       pets: 10,
+      badge: {
+        color: 'amber'
+      }
     },
     featured: true,
     order: 2,
@@ -122,11 +128,14 @@ export const accommodations: Accommodation[] = [
       'Pets allowed',
     ],
     pricing: {
-      weekday: 95, // Sunday to Thursday
-      weekend: 110, // Friday and Saturday
-      highSeason: 120, // July, August, Christmas, Easter
+      weekday: 130, // Sunday to Thursday
+      weekend: 145, // Friday and Saturday
+      highSeason: 160, // July, August, Christmas, Easter
       cleaning: 50,
       pets: 10,
+      badge: {
+        color: 'amber'
+      }
     },
     featured: true,
     order: 3,

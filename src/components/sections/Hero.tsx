@@ -3,6 +3,7 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useState, useEffect, useRef } from 'react';
 import { useTranslations } from 'next-intl';
+import Image from 'next/image';
 import Button from '@/components/ui/Button';
 import { ChevronDown, VolumeX, Sparkles, Sprout, PawPrint } from 'lucide-react';
 import { useIsMobile } from "@/hooks/useIsMobile";
@@ -77,15 +78,16 @@ export default function Hero({
             }}
             transition={{ duration: 1.5, ease: 'easeInOut' }}
           >
-            <img
+            <Image
               src={image}
-              alt=""
-              className="w-full h-full object-cover"
+              alt="Finca Emmita"
+              fill
+              priority={index === 0}
+              className="object-cover"
               style={{ 
-                objectPosition: 'center center',
-                minHeight: '100vh',
-                minWidth: '100%'
+                objectPosition: 'center center'
               }}
+              sizes="100vw"
             />
           </motion.div>
         ))}

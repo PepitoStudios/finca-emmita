@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { useTranslations } from 'next-intl';
+import Image from 'next/image';
 import { Phone, Mail, MessageCircle, Heart, Leaf, Users, Award } from 'lucide-react';
 import Button from '@/components/ui/Button';
 import { siteContent } from '@/data/content';
@@ -22,23 +23,31 @@ export default function HostProfile() {
               transition={{ duration: 0.7 }}
               className="relative"
             >
-              {/* Host Image Placeholder */}
+              {/* Host Image */}
               <div className="relative aspect-[3/4] rounded-2xl overflow-hidden shadow-2xl">
-                <div className="absolute inset-0 bg-gradient-to-br from-nature-200 to-earth-200 flex items-center justify-center">
-                  <div className="text-center">
-                    <div className="w-32 h-32 mx-auto mb-4 rounded-full bg-white/80 flex items-center justify-center">
-                      <Users className="w-16 h-16 text-nature-600" />
-                    </div>
-                    <p className="text-earth-600 font-medium text-lg">Emma</p>
-                    <p className="text-earth-500 text-sm">{t('sectionTitle')}</p>
-                  </div>
+                <Image
+                  src="/photos/site/host.png"
+                  alt="Emma - Host de Finca Emmita"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  priority
+                />
+                
+                {/* Optional gradient overlay for better text readability */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
+                
+                {/* Name overlay at bottom */}
+                <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+                  <p className="text-2xl font-bold drop-shadow-lg">Emma</p>
+                  <p className="text-sm opacity-90 drop-shadow">{t('sectionTitle')}</p>
                 </div>
+              </div>
 
-                {/* Verified Host Badge */}
-                <div className="absolute top-4 right-4 bg-nature-600 text-white rounded-full px-4 py-2 shadow-lg flex items-center gap-2">
-                  <Award className="w-5 h-5" />
-                  <span className="font-semibold text-sm">{t('superhost')}</span>
-                </div>
+              {/* Verified Host Badge */}
+              <div className="absolute top-4 right-4 bg-nature-600 text-white rounded-full px-4 py-2 shadow-lg flex items-center gap-2">
+                <Award className="w-5 h-5" />
+                <span className="font-semibold text-sm">{t('superhost')}</span>
               </div>
 
               {/* Decorative Elements */}

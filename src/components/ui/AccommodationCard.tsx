@@ -3,8 +3,9 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useTranslations } from 'next-intl';
-import { Check, Users, Home, Euro, ArrowRight, ChevronDown, ChevronUp, ChevronRight, ChevronLeft } from 'lucide-react';
+import { Check, Users, Home, Euro, ArrowRight, ChevronDown, ChevronUp, ChevronRight, ChevronLeft, Maximize2 } from 'lucide-react';
 import Button from '@/components/ui/Button';
+import ImageLightbox from '@/components/ui/ImageLightbox';
 import type { Accommodation } from '@/lib/types';
 
 interface AccommodationCardProps {
@@ -36,6 +37,7 @@ export default function AccommodationCard({ accommodation, index }: Accommodatio
   const tCommon = useTranslations('common');
   const [showAllAmenities, setShowAllAmenities] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [isLightboxOpen, setIsLightboxOpen] = useState(false);
   const isEven = index % 2 === 0;
   const imageAnimation = isEven ? fadeInLeft : fadeInRight;
   const contentAnimation = isEven ? fadeInRight : fadeInLeft;
@@ -79,48 +81,71 @@ export default function AccommodationCard({ accommodation, index }: Accommodatio
         transition={imageAnimation.transition}
         className={`relative ${isEven ? 'lg:order-1' : 'lg:order-2'}`}
       >
-        <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl group">
+        <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl group bg-earth-100">
           {/* Background Image Carousel */}
           <motion.div
-            className="absolute inset-0"
+            className="absolute inset-0 cursor-pointer z-10 bg-earth-100"
+            onClick={() => setIsLightboxOpen(true)}
           >
             {accommodation.images.map((image, index) => (
               <motion.div
                 key={image.url}
-                className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+                className="absolute inset-0 flex items-center justify-center"
                 initial={{ opacity: 0 }}
                 animate={{
                   opacity: currentImageIndex === index ? 1 : 0,
-                  scale: currentImageIndex === index ? 1 : 1.1
+                  scale: currentImageIndex === index ? 1 : 1.05
                 }}
                 transition={{ duration: 1.5, ease: 'easeInOut' }}
-                style={{
-                  backgroundImage: `url(${image.url})`,
-                }}
-              />
+              >
+                <img
+                  src={image.url}
+                  alt={image.alt}
+                  className="w-full h-full object-contain"
+                />
+              </motion.div>
             ))}
           </motion.div>
-          {/* Navigation Arrows */}
+
+          {/* Expand/Fullscreen Icon - Bottom Right - Hidden on mobile */}
           <button
-            onClick={previousImage}
-            className="absolute left-4 top-1/2 -translate-y-1/2 p-3 bg-white/90 hover:bg-white rounded-full shadow-lg transition-all hover:scale-110 z-20"
+            onClick={(e) => {
+              e.stopPropagation();
+              setIsLightboxOpen(true);
+            }}
+            className="hidden lg:block absolute bottom-4 right-4 p-3 bg-white/90 hover:bg-white rounded-full shadow-lg transition-all hover:scale-110 z-30 opacity-0 group-hover:opacity-100"
+            aria-label="Ver galería completa"
+          >
+            <Maximize2 className="w-5 h-5 text-earth-700" />
+          </button>
+
+          {/* Navigation Arrows - Only visible on desktop */}
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              previousImage();
+            }}
+            className="absolute left-4 top-1/2 -translate-y-1/2 p-3 bg-white/90 hover:bg-white rounded-full shadow-lg transition-all hover:scale-110 z-30"
             aria-label={tCommon('previous')}
           >
             <ChevronLeft className="w-4 h-4 text-earth-700" />
           </button>
           <button
-            onClick={nextImage}
-            className="absolute right-4 top-1/2 -translate-y-1/2 p-3 bg-white/90 hover:bg-white rounded-full shadow-lg transition-all hover:scale-110 z-20"
+            onClick={(e) => {
+              e.stopPropagation();
+              nextImage();
+            }}
+            className="absolute right-4 top-1/2 -translate-y-1/2 p-3 bg-white/90 hover:bg-white rounded-full shadow-lg transition-all hover:scale-110 z-30"
             aria-label={tCommon('next')}
           >
             <ChevronRight className="w-4 h-4 text-earth-700" />
           </button>
 
-          {/* Hover Overlay */}
-          <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300" />
+          {/* Hover Overlay - subtle effect only */}
+          <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-all duration-300 pointer-events-none" />
 
           {/* Quick Info Badge */}
-          <div className="absolute top-4 right-4 bg-white/95 backdrop-blur-sm rounded-full px-4 py-2 shadow-lg">
+          <div className="absolute top-4 right-4 bg-white/95 backdrop-blur-sm rounded-full px-4 py-2 shadow-lg z-20">
             <div className="flex items-center gap-2">
               <Euro className="w-4 h-4 text-nature-600" />
               <span className="font-bold text-earth-900">
@@ -131,7 +156,7 @@ export default function AccommodationCard({ accommodation, index }: Accommodatio
           </div>
 
           {/* Capacity Badge */}
-          <div className="absolute bottom-4 left-4 bg-nature-600 text-white rounded-full px-4 py-2 shadow-lg">
+          <div className="absolute bottom-4 left-4 bg-nature-600 text-white rounded-full px-4 py-2 shadow-lg z-20">
             <div className="flex items-center gap-2">
               <Users className="w-4 h-4" />
               <span className="font-medium text-sm">
@@ -269,6 +294,16 @@ export default function AccommodationCard({ accommodation, index }: Accommodatio
           </Button>
         </div>
       </motion.div>
+
+      {/* Image Lightbox */}
+      <ImageLightbox
+        images={accommodation.images}
+        currentIndex={currentImageIndex}
+        isOpen={isLightboxOpen}
+        onClose={() => setIsLightboxOpen(false)}
+        onNext={nextImage}
+        onPrevious={previousImage}
+      />
     </div>
   );
 }

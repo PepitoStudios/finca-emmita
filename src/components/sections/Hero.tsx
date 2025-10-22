@@ -69,17 +69,25 @@ export default function Hero({
         {images.map((image, index) => (
           <motion.div
             key={image}
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+            className="absolute inset-0"
             initial={{ opacity: 0 }}
             animate={{
               opacity: currentImageIndex === index ? 1 : 0,
-              scale: currentImageIndex === index ? 1 : 1.1
+              scale: currentImageIndex === index ? 1 : 1.05
             }}
             transition={{ duration: 1.5, ease: 'easeInOut' }}
-            style={{
-              backgroundImage: `url(${image})`,
-            }}
-          />
+          >
+            <img
+              src={image}
+              alt=""
+              className="w-full h-full object-cover"
+              style={{ 
+                objectPosition: 'center center',
+                minHeight: '100vh',
+                minWidth: '100%'
+              }}
+            />
+          </motion.div>
         ))}
 
         {/* Enhanced Gradient Overlay */}

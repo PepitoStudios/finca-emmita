@@ -10,12 +10,13 @@ import { Card, CardContent } from '@/components/ui/Card';
 import { VolumeX, Wifi, Sprout, PawPrint } from 'lucide-react';
 import { siteContent } from '@/data/content';
 import { accommodations } from '@/data/accommodations';
+import { getHeroImages } from '@/assets/photos';
 
 export default function Home() {
   const t = useTranslations();
 
-  // Combine all accommodation images for hero carousel
-  const heroImages = accommodations.flatMap(acc => acc.images.map(img => img.url));
+  // Load hero images automatically
+  const heroImages = getHeroImages().map(img => img.url);
 
   return (
     <div className="w-full max-w-full overflow-x-hidden">

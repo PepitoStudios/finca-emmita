@@ -1,0 +1,59 @@
+{
+  "hero": [
+    "/photos/hero/01-finca.jpg",
+    "/photos/hero/02-piscina.jpg",
+    "/photos/hero/03-huerto.jpg",
+    "/photos/hero/04-chickens.jpg",
+    "/photos/hero/05-landscape.jpg",
+    "/photos/hero/06-flowers.jpg",
+    "/photos/hero/07-plants.jpg"
+  ],
+  "la-casita": [
+    "/photos/la-casita/01-facade.jpg",
+    "/photos/la-casita/02-sala.jpg",
+    "/photos/la-casita/03-sala.jpg",
+    "/photos/la-casita/04-sala.jpg",
+    "/photos/la-casita/05-sala.jpg",
+    "/photos/la-casita/06-cocina.jpg",
+    "/photos/la-casita/07-cocina.jpg",
+    "/photos/la-casita/08-habitación.jpg",
+    "/photos/la-casita/09-habitación.jpg",
+    "/photos/la-casita/10-habitación.jpg",
+    "/photos/la-casita/11-baño.jpg",
+    "/photos/la-casita/12-outdoor.jpg",
+    "/photos/la-casita/13-outdoor.jpg"
+  ],
+  "la-olivita": [
+    "/photos/la-olivita/01-facade.jpg",
+    "/photos/la-olivita/02-sala.jpg",
+    "/photos/la-olivita/03-sala.jpg",
+    "/photos/la-olivita/04-sala.jpg",
+    "/photos/la-olivita/05-cocina.jpg",
+    "/photos/la-olivita/06-cocina.jpg",
+    "/photos/la-olivita/07-habitación.jpg",
+    "/photos/la-olivita/08-habitación.jpg",
+    "/photos/la-olivita/09-baño.jpg",
+    "/photos/la-olivita/10-baño.jpg",
+    "/photos/la-olivita/11-terraza.jpg",
+    "/photos/la-olivita/12-teraza.jpg",
+    "/photos/la-olivita/13-outdoor.jpg"
+  ],
+  "casa-luna": [
+    "/photos/casa-luna/02-sala.jpg",
+    "/photos/casa-luna/03-sala.jpg",
+    "/photos/casa-luna/04-sala.jpg",
+    "/photos/casa-luna/05-sala.jpg",
+    "/photos/casa-luna/06-cocina.jpg",
+    "/photos/casa-luna/07-habitación1.jpg",
+    "/photos/casa-luna/08-habitación1.jpg",
+    "/photos/casa-luna/09-baño1.jpg",
+    "/photos/casa-luna/10-habitación2.jpg",
+    "/photos/casa-luna/11-baño2.jpg",
+    "/photos/casa-luna/12-baño2.jpg",
+    "/photos/casa-luna/13-terraza.jpg",
+    "/photos/casa-luna/14-teraza.jpg",
+    "/photos/casa-luna/15-terraza.jpg",
+    "/photos/casa-luna/17-outdoor.jpg",
+    "/photos/casa-luna/18-outdoor.jpg"
+  ]
+}

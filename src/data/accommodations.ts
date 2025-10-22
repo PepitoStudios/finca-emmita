@@ -1,4 +1,10 @@
 import { Accommodation } from '@/lib/types';
+import { getAccommodationImages } from '@/assets/photos';
+
+// Load images automatically
+const casitaImages = getAccommodationImages('la-casita');
+const olivitaImages = getAccommodationImages('la-olivita');
+const lunaImages = getAccommodationImages('casa-luna');
 
 export const accommodations: Accommodation[] = [
   {
@@ -11,22 +17,10 @@ export const accommodations: Accommodation[] = [
     type: 'habitacion',
     capacity: 2,
     size: 30,
-    images: [
+    images: casitaImages.length > 0 ? casitaImages : [
       {
         url: 'https://static.wixstatic.com/media/922666_1dfe8c983bb940a3b142055475d3724d~mv2.jpg/v1/fill/w_1200,h_900,q_90/922666_1dfe8c983bb940a3b142055475d3724d~mv2.jpg',
         alt: 'La Casita - Log cabin exterior with terrace',
-        width: 1200,
-        height: 900,
-      },
-      {
-        url: 'https://static.wixstatic.com/media/922666_4bb791b85b284c8ca4a058e5733ae629~mv2.jpg/v1/fill/w_1200,h_900,q_90/922666_4bb791b85b284c8ca4a058e5733ae629~mv2.jpg',
-        alt: 'La Casita - Interior living room with pellet stove',
-        width: 1200,
-        height: 900,
-      },
-      {
-        url: 'https://static.wixstatic.com/media/922666_b18bd962048443b8912e46de3dd1db8f~mv2.jpg/v1/fill/w_1200,h_900,q_90/922666_b18bd962048443b8912e46de3dd1db8f~mv2.jpg',
-        alt: 'La Casita - Bedroom with comfortable bedding',
         width: 1200,
         height: 900,
       },
@@ -64,16 +58,10 @@ export const accommodations: Accommodation[] = [
     type: 'habitacion',
     capacity: 2,
     size: 25,
-    images: [
+    images: olivitaImages.length > 0 ? olivitaImages : [
       {
         url: 'https://static.wixstatic.com/media/922666_61d6eb7d424c425e80d1cd6b51f0be98~mv2.jpg/v1/fill/w_1200,h_900,q_90/922666_61d6eb7d424c425e80d1cd6b51f0be98~mv2.jpg',
         alt: 'La Olivita - Exterior view with terrace',
-        width: 1200,
-        height: 900,
-      },
-      {
-        url: 'https://static.wixstatic.com/media/922666_1346c66917f44586a5c2f62fed03f976~mv2.jpg/v1/fill/w_1200,h_900,q_90/922666_1346c66917f44586a5c2f62fed03f976~mv2.jpg',
-        alt: 'La Olivita - Interior living room with wood burner',
         width: 1200,
         height: 900,
       },
@@ -113,16 +101,10 @@ export const accommodations: Accommodation[] = [
     type: 'habitacion',
     capacity: 4,
     size: 65,
-    images: [
+    images: lunaImages.length > 0 ? lunaImages : [
       {
         url: 'https://img.alohacamp.com/s4eAvzDotIWtmrzej48Z627rS223BCDg5_XPCNkrrzM/resize:fit:1920:1246/enlarge:1/czM6Ly9hbG9oYS5pbWFnZXMvcHJvcGVydGllcy81N2FiNDVjZDA1ZWY1OTg2YjQ1OWVhMTdkOWQxNjRjNmJiOTUzNjU5LmpwZw',
         alt: 'Casa Luna - Exterior view with valley backdrop',
-        width: 1200,
-        height: 900,
-      },
-      {
-        url: 'https://img.alohacamp.com/kQORiQH2yDOMUJXxh6rRXnxHxwc4EttCBwnaKaQ3ZWY/resize:fit:1920:1246/enlarge:1/czM6Ly9hbG9oYS5pbWFnZXMvcHJvcGVydGllcy8yMGY2MTllMzRhMGRiNWY2ODg1YmExMjE3Njc1ODkzNDc4NWNlMjg3LmpwZw',
-        alt: 'Casa Luna - Interior living area with fireplace',
         width: 1200,
         height: 900,
       },

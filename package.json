@@ -7,7 +7,8 @@
     "build": "next build --turbopack",
     "start": "next start",
     "lint": "eslint",
-    "validate:translations": "tsx scripts/validate-translations.ts"
+    "validate:translations": "tsx scripts/validate-translations.ts",
+    "scan-images": "node scripts/scan-images.js"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",

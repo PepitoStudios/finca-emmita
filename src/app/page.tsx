@@ -9,7 +9,6 @@ import Button from '@/components/ui/Button';
 import { Card, CardContent } from '@/components/ui/Card';
 import { VolumeX, Wifi, Sprout, PawPrint } from 'lucide-react';
 import { siteContent } from '@/data/content';
-import { accommodations } from '@/data/accommodations';
 import { getHeroImages } from '@/assets/photos';
 
 export default function Home() {

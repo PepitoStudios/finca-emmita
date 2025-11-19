@@ -1,7 +1,7 @@
 export const siteContent = {
   siteName: 'Finca Emmita',
   tagline: 'Casas Rurales',
-  touristLicense: 'ESFCTU0000430200008690200000000000000000HUTTE-0022085',
+  touristLicense: process.env.TOURIST_LICENSE,
   location: {
     address: 'Valle near El Perello',
     city: 'El Perello',
@@ -17,12 +17,12 @@ export const siteContent = {
     },
   },
   contact: {
-    name: 'Emma',
-    phone: '+34 681 315 149',
-    whatsapp: '+34 681 315 149',
-    email: 'emma@emmarault.com',
-    facebook: 'https://www.facebook.com/fincaemmita',
-    instagram: 'https://www.instagram.com/stories/fincaemmita/',
+    name: process.env.NAME || '' ,
+    phone: process.env.PHONE || '',
+    whatsapp: process.env.WHATSAPP || '',
+    email: process.env.EMAIL || '',
+    facebook: process.env.FACEBOOK || '',
+    instagram: process.env.INSTAGRAM || '',
   },
   hero: {
     title: 'Casas Rurales',

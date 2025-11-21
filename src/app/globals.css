@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
-@import "tailwindcss";
+@import 'tailwindcss';
 
 :root {
   --background: #ffffff;
@@ -119,7 +119,12 @@ html {
 }
 
 /* Typography Utilities */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-serif);
   font-weight: 700;
   line-height: 1.2;
@@ -139,7 +144,8 @@ h3 {
 }
 
 /* Smooth Transitions */
-a, button {
+a,
+button {
   transition: all var(--transition-base);
 }
 
@@ -250,3 +256,180 @@ img {
 .animate-scale-in {
   animation: scaleIn 0.4s ease-out forwards;
 }
+
+/* Custom DatePicker Styles */
+.booking-datepicker {
+  font-family: var(--font-sans);
+  max-width: 100%;
+  overflow: hidden;
+}
+
+/* Month container */
+.booking-datepicker .rdp-month {
+  width: 100%;
+  max-width: 100%;
+}
+
+/* Table styling */
+.booking-datepicker .rdp-table {
+  width: 100%;
+  max-width: 100%;
+}
+
+/* Caption (month/year header) */
+.booking-datepicker .rdp-caption {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem 0;
+  margin-bottom: 0.5rem;
+}
+
+.booking-datepicker .rdp-caption_label {
+  font-weight: 600;
+  color: #3d332a; /* earth-800 */
+  font-size: 1rem;
+}
+
+/* Navigation buttons */
+.booking-datepicker .rdp-nav {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.booking-datepicker .rdp-button_previous,
+.booking-datepicker .rdp-button_next {
+  border-radius: 0.5rem;
+  transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 0.5rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.booking-datepicker .rdp-button_previous:hover,
+.booking-datepicker .rdp-button_next:hover {
+  background-color: #f5f0ea; /* earth-100 */
+}
+
+/* Weekday headers */
+.booking-datepicker .rdp-weekday {
+  color: #7d6246; /* earth-600 */
+  font-size: 0.875rem;
+  font-weight: 500;
+  padding: 0.5rem 0;
+}
+
+/* Day cells */
+.booking-datepicker .rdp-day {
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0;
+}
+
+.booking-datepicker .rdp-day_button {
+  width: 100%;
+  height: 100%;
+  border-radius: 0;
+  transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 0.875rem;
+}
+
+.booking-datepicker .rdp-day_button:hover:not([disabled]):not(.rdp-day_selected) {
+  background-color: #e9f4ea; /* nature-100 */
+  color: #2d5834; /* nature-700 */
+}
+
+/* Selected days */
+.booking-datepicker .rdp-day_button.rdp-day_selected {
+  background-color: #357a3f !important; /* nature-600 */
+  color: white !important;
+  font-weight: 600;
+}
+
+/* Range middle days */
+.booking-datepicker .rdp-day_button.rdp-day_range_middle {
+  background-color: #e9f4ea !important; /* nature-100 */
+  color: #2d5834 !important; /* nature-700 */
+  border-radius: 0 !important;
+}
+
+/* Range start */
+.booking-datepicker .rdp-day_button.rdp-day_range_start {
+  background-color: #357a3f !important; /* nature-600 */
+  color: white !important;
+  border-radius: 0 !important;
+}
+
+/* Range end */
+.booking-datepicker .rdp-day_button.rdp-day_range_end {
+  background-color: #357a3f !important; /* nature-600 */
+  color: white !important;
+  border-radius: 0 !important;
+}
+
+/* Disabled days */
+.booking-datepicker .rdp-day_button:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.booking-datepicker .rdp-day_button:disabled:hover {
+  background-color: transparent;
+}
+
+/* Focus styles */
+.booking-datepicker .rdp-day_button:focus-visible {
+  outline: 2px solid #357a3f; /* nature-600 */
+  outline-offset: 2px;
+}
+
+/* Today indicator */
+.booking-datepicker .rdp-day_button.rdp-day_today {
+  font-weight: 600;
+  color: #357a3f; /* nature-600 */
+}
+
+/* Price indicator modifiers */
+
+/* Weekend days (Friday & Saturday) - Green */
+.booking-datepicker .rdp-day_weekend > .rdp-day_button:not(.rdp-day_selected):not(.rdp-day_range_middle) {
+  background-color: #e9f4ea; /* nature-100 */
+  color: #1e4620; /* nature-800 */
+  font-weight: 500;
+}
+
+.booking-datepicker .rdp-day_weekend > .rdp-day_button:not(.rdp-day_selected):not(.rdp-day_range_middle):hover {
+  background-color: #d1e7dd; /* nature-200 */
+  color: #1a3a1c; /* nature-900 */
+}
+
+/* High season days - Amber */
+.booking-datepicker .rdp-day_highseason > .rdp-day_button:not(.rdp-day_selected):not(.rdp-day_range_middle) {
+  background-color: #fef3c7; /* accent-100 */
+  color: #92400e; /* accent-700 */
+  font-weight: 600;
+}
+
+.booking-datepicker .rdp-day_highseason > .rdp-day_button:not(.rdp-day_selected):not(.rdp-day_range_middle):hover {
+  background-color: #fde68a; /* accent-200 */
+  color: #78350f; /* accent-800 */
+}
+
+/* Ensure selected days always override modifier colors */
+.booking-datepicker .rdp-day_button.rdp-day_selected,
+.booking-datepicker .rdp-day_button.rdp-day_range_start,
+.booking-datepicker .rdp-day_button.rdp-day_range_end {
+  background-color: #2d5834 !important; /* nature-700 */
+  color: white !important;
+}
+
+/* Range middle days maintain subtle background */
+.booking-datepicker .rdp-day_button.rdp-day_range_middle {
+  background-color: #e9f4ea !important; /* nature-100 */
+  color: #2d5834 !important; /* nature-700 */
+}
+

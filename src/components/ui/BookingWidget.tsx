@@ -1,21 +1,40 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useTranslations } from 'next-intl';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Calendar, Users, Home, ChevronDown, ChevronUp, Phone, X } from 'lucide-react';
+import { Calendar, Users, Home, ChevronDown, ChevronUp, Phone, X, PawPrint, Minus, Plus } from 'lucide-react';
+import { DayPicker, DateRange } from 'react-day-picker';
+import { format } from 'date-fns';
+import { es, enUS } from 'date-fns/locale';
+import 'react-day-picker/style.css';
 import Button from './Button';
 import { accommodations } from '@/data/accommodations';
+import { useLocale } from 'next-intl';
+import { useBookingPrice } from '@/hooks/useBookingPrice';
+import { useClickOutside } from '@/hooks/useClickOutside';
+import { isWeekend, isHighSeason } from '@/lib/pricing/dateUtils';
 
 export default function BookingWidget() {
   const t = useTranslations('booking');
+  const locale = useLocale();
   const [isOpen, setIsOpen] = useState(true)
   const [isVisible, setIsVisible] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
-  const [checkIn, setCheckIn] = useState('');
-  const [checkOut, setCheckOut] = useState('');
+  const [showDatePicker, setShowDatePicker] = useState(false);
+  const [dateRange, setDateRange] = useState<DateRange | undefined>();
   const [guests, setGuests] = useState(2);
+  const [pets, setPets] = useState(0);
   const [selectedAccommodation, setSelectedAccommodation] = useState(accommodations[0].id);
+  
+  // Ref for datepicker to detect outside clicks
+  const datePickerRef = useRef<HTMLDivElement>(null);
+
+  // Get date-fns locale based on current locale
+  const dateLocale = locale === 'es' ? es : enUS;
+  
+  // Close datepicker when clicking outside
+  useClickOutside(datePickerRef, () => setShowDatePicker(false), showDatePicker);
 
   // Show widget after scrolling past hero
   useEffect(() => {
@@ -28,35 +47,38 @@ export default function BookingWidget() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Calculate number of nights
-  const calculateNights = () => {
-    if (!checkIn || !checkOut) return 0;
-    const start = new Date(checkIn);
-    const end = new Date(checkOut);
-    const nights = Math.ceil((end.getTime() - start.getTime()) / (1000 * 60 * 60 * 24));
-    return nights > 0 ? nights : 0;
-  };
+  // Get selected accommodation
+  const selectedAccommodationData = accommodations.find(a => a.id === selectedAccommodation);
 
-  // Calculate total price (simplified)
-  const calculatePrice = () => {
-    const nights = calculateNights();
-    const accommodation = accommodations.find(a => a.id === selectedAccommodation);
-    return nights * (accommodation?.pricing.weekday || 75);
-  };
-
-  const nights = calculateNights();
-  const totalPrice = calculatePrice();
+  // Use pricing hook
+  const { priceBreakdown, totalNights, isValid } = useBookingPrice(
+    selectedAccommodationData,
+    dateRange,
+    pets
+  );
+  
+  // Reset guests if they exceed the new accommodation's capacity
+  useEffect(() => {
+    if (selectedAccommodationData && guests > selectedAccommodationData.capacity) {
+      setGuests(selectedAccommodationData.capacity);
+    }
+  }, [selectedAccommodation, selectedAccommodationData, guests]);
 
   const handleBooking = () => {
-    const accommodation = accommodations.find(a => a.id === selectedAccommodation);
+    if (!priceBreakdown || !selectedAccommodationData) return;
+    
+    const checkIn = dateRange?.from ? format(dateRange.from, 'dd/MM/yyyy') : '';
+    const checkOut = dateRange?.to ? format(dateRange.to, 'dd/MM/yyyy') : '';
+    
     const message = encodeURIComponent(
       t('whatsappMessage', {
-        accommodation: accommodation?.title || '',
+        accommodation: selectedAccommodationData.title || '',
         checkIn,
         checkOut,
         guests: guests.toString(),
-        nights: nights.toString(),
-        totalPrice: totalPrice.toString()
+        pets: pets.toString(),
+        nights: totalNights.toString(),
+        totalPrice: priceBreakdown.total.toString()
       })
     );
     window.open(`https://wa.me/34681315149?text=${message}`, '_blank');
@@ -65,6 +87,23 @@ export default function BookingWidget() {
   const toggleWidget = () => {
     setIsOpen(!isOpen)
   }
+
+  const formatDateRange = () => {
+    if (!dateRange?.from) return t('selectDateRange');
+    if (!dateRange?.to) return format(dateRange.from, 'dd MMM', { locale: dateLocale });
+    return `${format(dateRange.from, 'dd MMM', { locale: dateLocale })} - ${format(dateRange.to, 'dd MMM', { locale: dateLocale })}`;
+  };
+  
+  // Modifiers for visual price indicators
+  const modifiers = {
+    weekend: (date: Date) => isWeekend(date) && !isHighSeason(date),
+    highSeason: (date: Date) => isHighSeason(date),
+  };
+  
+  const modifiersClassNames = {
+    weekend: 'rdp-day_weekend',
+    highSeason: 'rdp-day_highseason',
+  };
 
   if (!isVisible) return null;
 
@@ -120,34 +159,54 @@ export default function BookingWidget() {
               </select>
             </div>
 
-            {/* Check-in */}
+            {/* Date Range Picker */}
             <div>
               <label className="flex items-center gap-2 text-sm font-medium text-earth-700 mb-2">
                 <Calendar className="w-4 h-4" />
-                {t('checkIn')}
+                {t('checkIn')} - {t('checkOut')}
               </label>
-              <input
-                type="date"
-                value={checkIn}
-                onChange={(e) => setCheckIn(e.target.value)}
-                min={new Date().toISOString().split('T')[0]}
-                className="w-full px-4 py-3 border border-earth-200 rounded-lg focus:ring-2 focus:ring-nature-500 focus:border-transparent transition-all"
-              />
-            </div>
-
-            {/* Check-out */}
-            <div>
-              <label className="flex items-center gap-2 text-sm font-medium text-earth-700 mb-2">
-                <Calendar className="w-4 h-4" />
-                {t('checkOut')}
-              </label>
-              <input
-                type="date"
-                value={checkOut}
-                onChange={(e) => setCheckOut(e.target.value)}
-                min={checkIn || new Date().toISOString().split('T')[0]}
-                className="w-full px-4 py-3 border border-earth-200 rounded-lg focus:ring-2 focus:ring-nature-500 focus:border-transparent transition-all"
-              />
+              <button
+                onClick={() => setShowDatePicker(!showDatePicker)}
+                className="w-full px-4 py-3 border border-earth-200 rounded-lg focus:ring-2 focus:ring-nature-500 focus:border-transparent transition-all text-left"
+              >
+                {formatDateRange()}
+              </button>
+              
+              {showDatePicker && (
+                <motion.div
+                  ref={datePickerRef}
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="mt-2 p-4 border border-earth-200 rounded-lg bg-white shadow-lg"
+                >
+                  <DayPicker
+                    mode="range"
+                    selected={dateRange}
+                    onSelect={setDateRange}
+                    disabled={{ before: new Date() }}
+                    locale={dateLocale}
+                    className="booking-datepicker"
+                    modifiers={modifiers}
+                    modifiersClassNames={modifiersClassNames}
+                  />
+                  
+                  {/* Price legend */}
+                  <div className="mt-3 pt-3 border-t border-earth-200 flex flex-wrap gap-3 text-xs">
+                    <div className="flex items-center gap-1.5">
+                      <div className="w-3 h-3 rounded bg-white border border-earth-300"></div>
+                      <span className="text-earth-600">{t('priceIndicator.weekday')}</span>
+                    </div>
+                    <div className="flex items-center gap-1.5">
+                      <div className="w-3 h-3 rounded bg-accent-100 border border-accent-300"></div>
+                      <span className="text-earth-600">{t('priceIndicator.weekend')}</span>
+                    </div>
+                    <div className="flex items-center gap-1.5">
+                      <div className="w-3 h-3 rounded bg-nature-100 border border-nature-300"></div>
+                      <span className="text-earth-600">{t('priceIndicator.highSeason')}</span>
+                    </div>
+                  </div>
+                </motion.div>
+              )}
             </div>
 
             {/* Guests */}
@@ -161,7 +220,7 @@ export default function BookingWidget() {
                 onChange={(e) => setGuests(Number(e.target.value))}
                 className="w-full px-4 py-3 border border-earth-200 rounded-lg focus:ring-2 focus:ring-nature-500 focus:border-transparent transition-all"
               >
-                {[1, 2, 3, 4, 5, 6].map((num) => (
+                {Array.from({ length: selectedAccommodationData?.capacity || 6 }, (_, i) => i + 1).map((num) => (
                   <option key={num} value={num}>
                     {num} {t(num === 1 ? 'guest' : 'guestsPlural')}
                   </option>
@@ -169,20 +228,78 @@ export default function BookingWidget() {
               </select>
             </div>
 
+            {/* Pets */}
+            <div>
+              <label className="flex items-center gap-2 text-sm font-medium text-earth-700 mb-2">
+                <PawPrint className="w-4 h-4" />
+                {t('pets')}
+              </label>
+              <div className="flex items-center gap-3">
+                <button
+                  onClick={() => setPets(Math.max(0, pets - 1))}
+                  disabled={pets === 0}
+                  className="p-2 border border-earth-200 rounded-lg hover:bg-earth-50 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+                >
+                  <Minus className="w-4 h-4" />
+                </button>
+                <div className="flex-1 px-4 py-3 border border-earth-200 rounded-lg text-center font-medium">
+                  {pets} {t(pets === 1 ? 'pet' : 'petsPlural')}
+                </div>
+                <button
+                  onClick={() => setPets(Math.min(4, pets + 1))}
+                  disabled={pets === 4}
+                  className="p-2 border border-earth-200 rounded-lg hover:bg-earth-50 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+                >
+                  <Plus className="w-4 h-4" />
+                </button>
+              </div>
+            </div>
+
             {/* Price Summary */}
-            {nights > 0 && (
+            {totalNights > 0 && priceBreakdown && (
               <motion.div
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="bg-earth-50 rounded-lg p-4 border border-earth-100"
+                className="bg-earth-50 rounded-lg p-4 border border-earth-100 space-y-2"
               >
-                <div className="flex justify-between text-sm text-earth-600 mb-1">
-                  <span>€{accommodations.find(a => a.id === selectedAccommodation)?.pricing.weekday} × {nights} {t('nights', { count: nights })}</span>
-                  <span>€{totalPrice}</span>
+                {/* Nights breakdown */}
+                {priceBreakdown.nightsBreakdown.weekday.count > 0 && (
+                  <div className="flex justify-between text-sm text-earth-600">
+                    <span>{priceBreakdown.nightsBreakdown.weekday.count} {t('weekdayNights')} × €{priceBreakdown.nightsBreakdown.weekday.pricePerNight}</span>
+                    <span>€{priceBreakdown.nightsBreakdown.weekday.total}</span>
+                  </div>
+                )}
+                {priceBreakdown.nightsBreakdown.weekend.count > 0 && (
+                  <div className="flex justify-between text-sm text-earth-600">
+                    <span>{priceBreakdown.nightsBreakdown.weekend.count} {t('weekendNights')} × €{priceBreakdown.nightsBreakdown.weekend.pricePerNight}</span>
+                    <span>€{priceBreakdown.nightsBreakdown.weekend.total}</span>
+                  </div>
+                )}
+                {priceBreakdown.nightsBreakdown.highSeason.count > 0 && (
+                  <div className="flex justify-between text-sm text-earth-600">
+                    <span>{priceBreakdown.nightsBreakdown.highSeason.count} {t('highSeasonNights')} × €{priceBreakdown.nightsBreakdown.highSeason.pricePerNight}</span>
+                    <span>€{priceBreakdown.nightsBreakdown.highSeason.total}</span>
+                  </div>
+                )}
+                
+                {/* Pets fee */}
+                {pets > 0 && (
+                  <div className="flex justify-between text-sm text-earth-600">
+                    <span>{pets} {t('petsFee')}</span>
+                    <span>€{priceBreakdown.petsTotal}</span>
+                  </div>
+                )}
+                
+                {/* Cleaning fee */}
+                <div className="flex justify-between text-sm text-earth-600">
+                  <span>{t('cleaningFee')}</span>
+                  <span>€{priceBreakdown.cleaningFee}</span>
                 </div>
+                
+                {/* Total */}
                 <div className="flex justify-between font-bold text-nature-700 text-lg pt-2 border-t border-earth-200">
                   <span>{t('total')}</span>
-                  <span>€{totalPrice}</span>
+                  <span>€{priceBreakdown.total}</span>
                 </div>
               </motion.div>
             )}
@@ -190,11 +307,11 @@ export default function BookingWidget() {
             {/* Book Button */}
             <Button
               onClick={handleBooking}
-              disabled={!checkIn || !checkOut || nights <= 0}
+              disabled={!dateRange?.from || !dateRange?.to || totalNights <= 0}
               className="w-full"
               size="lg"
             >
-              {nights > 0 ? `${t('bookNow')} - €${totalPrice}` : t('selectDates')}
+              {totalNights > 0 ? `${t('bookNow')} - €${priceBreakdown?.total || 0}` : t('selectDates')}
             </Button>
 
             {/* Contact Alternative */}
@@ -232,9 +349,9 @@ export default function BookingWidget() {
               </div>
               <div className="text-left">
                 <p className="font-semibold text-earth-800">{t('title')}</p>
-                {nights > 0 && (
+                {totalNights > 0 && (
                   <p className="text-sm text-earth-600">
-                    {nights} {t('nights', { count: nights })} · €{totalPrice}
+                    {totalNights} {t('nights', { count: totalNights })} · €{priceBreakdown?.total || 0}
                   </p>
                 )}
               </div>
@@ -275,32 +392,34 @@ export default function BookingWidget() {
                     </select>
                   </div>
 
-                  {/* Dates */}
-                  <div className="grid grid-cols-2 gap-2">
-                    <div>
-                      <label className="text-xs font-medium text-earth-600 mb-1 block">
-                        {t('checkIn')}
-                      </label>
-                      <input
-                        type="date"
-                        value={checkIn}
-                        onChange={(e) => setCheckIn(e.target.value)}
-                        min={new Date().toISOString().split('T')[0]}
-                        className="w-full px-3 py-3 border border-earth-200 rounded-lg text-sm"
-                      />
-                    </div>
-                    <div>
-                      <label className="text-xs font-medium text-earth-600 mb-1 block">
-                        {t('checkOut')}
-                      </label>
-                      <input
-                        type="date"
-                        value={checkOut}
-                        onChange={(e) => setCheckOut(e.target.value)}
-                        min={checkIn || new Date().toISOString().split('T')[0]}
-                        className="w-full px-3 py-3 border border-earth-200 rounded-lg text-sm"
-                      />
-                    </div>
+                  {/* Date Range Picker Mobile */}
+                  <div>
+                    <label className="text-xs font-medium text-earth-600 mb-1 block">
+                      {t('checkIn')} - {t('checkOut')}
+                    </label>
+                    <button
+                      onClick={() => setShowDatePicker(!showDatePicker)}
+                      className="w-full px-3 py-3 border border-earth-200 rounded-lg text-sm text-left"
+                    >
+                      {formatDateRange()}
+                    </button>
+                    
+                    {showDatePicker && (
+                      <motion.div
+                        initial={{ opacity: 0, y: -10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="mt-2 p-2 border border-earth-200 rounded-lg bg-white"
+                      >
+                        <DayPicker
+                          mode="range"
+                          selected={dateRange}
+                          onSelect={setDateRange}
+                          disabled={{ before: new Date() }}
+                          locale={dateLocale}
+                          className="booking-datepicker text-sm"
+                        />
+                      </motion.div>
+                    )}
                   </div>
 
                   {/* Guests */}
@@ -321,14 +440,40 @@ export default function BookingWidget() {
                     </select>
                   </div>
 
+                  {/* Pets Mobile */}
+                  <div>
+                    <label className="text-xs font-medium text-earth-600 mb-1 block">
+                      {t('pets')}
+                    </label>
+                    <div className="flex items-center gap-2">
+                      <button
+                        onClick={() => setPets(Math.max(0, pets - 1))}
+                        disabled={pets === 0}
+                        className="p-2 border border-earth-200 rounded-lg hover:bg-earth-50 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+                      >
+                        <Minus className="w-4 h-4" />
+                      </button>
+                      <div className="flex-1 px-3 py-3 border border-earth-200 rounded-lg text-center text-sm font-medium">
+                        {pets} {t(pets === 1 ? 'pet' : 'petsPlural')}
+                      </div>
+                      <button
+                        onClick={() => setPets(Math.min(4, pets + 1))}
+                        disabled={pets === 4}
+                        className="p-2 border border-earth-200 rounded-lg hover:bg-earth-50 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+                      >
+                        <Plus className="w-4 h-4" />
+                      </button>
+                    </div>
+                  </div>
+
                   {/* Book Button */}
                   <Button
                     onClick={handleBooking}
-                    disabled={!checkIn || !checkOut || nights <= 0}
+                    disabled={!dateRange?.from || !dateRange?.to || totalNights <= 0}
                     className="w-full"
                     size="lg"
                   >
-                    {nights > 0 ? `${t('book')} - €${totalPrice}` : t('selectDates')}
+                    {totalNights > 0 ? `${t('book')} - €${priceBreakdown?.total || 0}` : t('selectDates')}
                   </Button>
                 </div>
               </motion.div>

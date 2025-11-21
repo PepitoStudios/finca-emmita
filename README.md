@@ -16,6 +16,7 @@ Sitio web moderno para Ecoturismo Villafeliche, un alojamiento rural ecológico 
 ## Características Implementadas ✅
 
 ### FASE 1 - Setup Base
+
 - ✅ Proyecto Next.js 15 con TypeScript
 - ✅ Tailwind CSS v4 con tema personalizado (colores naturales)
 - ✅ ESLint y Prettier configurados
@@ -23,11 +24,13 @@ Sitio web moderno para Ecoturismo Villafeliche, un alojamiento rural ecológico 
 - ✅ Dependencias instaladas (Framer Motion, React Hook Form, Lucide)
 
 ### Componentes UI Base
+
 - ✅ Button (múltiples variantes, estados de loading)
 - ✅ Card (con sub-componentes Header, Title, Description, Content, Footer)
 - ✅ Input (con validación y errores)
 
 ### Layout Components
+
 - ✅ Header (sticky con efecto scroll, pasa estado isScrolled a Navigation)
 - ✅ Navigation (hash-based con smooth scroll, Intersection Observer, responsive mobile menu)
 - ✅ Footer (multi-columna con enlaces hash, contacto, redes sociales)
@@ -35,6 +38,7 @@ Sitio web moderno para Ecoturismo Villafeliche, un alojamiento rural ecológico 
 - ✅ LanguageSwitcher (desktop/mobile, cookie-based locale storage)
 
 ### Arquitectura de Navegación
+
 - ✅ Single-page application con secciones (#hero, #accommodations, #location, #contact)
 - ✅ Hash-based anchors con smooth scrolling
 - ✅ Intersection Observer para detección de sección activa
@@ -43,6 +47,7 @@ Sitio web moderno para Ecoturismo Villafeliche, un alojamiento rural ecológico 
 - ✅ Gestión de foco para accesibilidad y navegación por teclado
 
 ### Páginas
+
 - ✅ Home (single-page con secciones Hero, Accommodations, Location, Contact)
 - ⏳ Páginas adicionales (si se necesitan en el futuro)
 
@@ -128,11 +133,13 @@ Este proyecto implementa una arquitectura de **single-page application (SPA)** c
 ### Componentes Clave
 
 **Header** (`src/components/layout/Header.tsx`)
+
 - Detecta el estado de scroll (isScrolled) mediante window scroll events
 - Pasa isScrolled como prop al componente Navigation
 - Adapta colores del branding según estado de scroll
 
 **Navigation** (`src/components/layout/Navigation.tsx`)
+
 - Navegación hash-based con smooth scrolling (#hero, #accommodations, #location, #contact)
 - Usa Intersection Observer API para detectar la sección activa visible
 - Colores adaptativos: blanco cuando header transparente, oscuro cuando scrolled
@@ -143,11 +150,13 @@ Este proyecto implementa una arquitectura de **single-page application (SPA)** c
 - Cleanup apropiado: disconnect() en Intersection Observer
 
 **Footer** (`src/components/layout/Footer.tsx`)
+
 - Enlaces de navegación convertidos a hash anchors
 - Smooth scroll handlers con window.history.pushState para actualizar URL
 - Mantiene consistencia con el sistema de navegación principal
 
 **Page** (`src/app/page.tsx`)
+
 - Secciones con IDs correspondientes: hero, accommodations, location, contact
 - Los IDs permiten la navegación hash y detección por Intersection Observer
 
@@ -196,6 +205,7 @@ Este proyecto es completamente bilingüe (English/Spanish) usando **next-intl**:
 ### Documentación Completa
 
 Ver `/src/i18n/CLAUDE.md` para documentación detallada del sistema i18n, incluyendo:
+
 - Arquitectura y flujo de detección de locale
 - Estructura de archivos de traducción
 - Patrones de implementación por tipo de componente
@@ -240,6 +250,13 @@ Ver `/src/i18n/CLAUDE.md` para documentación detallada del sistema i18n, incluy
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new)
 
 Este proyecto está optimizado para [Vercel Platform](https://vercel.com).
+
+## 📚 Documentación
+
+Para más información sobre la arquitectura del proyecto y futuras features:
+
+- **[Documentación Técnica](./docs/README.md)** - Arquitectura, stack tecnológico, comandos útiles
+- **[Roadmap](./docs/roadmap.md)** - Planificación de futuras features y mejoras
 
 ---
 

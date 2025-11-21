@@ -230,6 +230,10 @@
     "guests": "Personnes",
     "guest": "Personne",
     "guestsPlural": "Personnes",
+    "pets": "Animaux",
+    "pet": "Animal",
+    "petsPlural": "animaux",
+    "selectDateRange": "Sélectionner la période",
     "from": "À partir de",
     "perNight": "/nuit",
     "nights": "nuits",
@@ -240,7 +244,19 @@
     "selectDates": "Sélectionner les Dates",
     "orContact": "Ou contactez Emma directement",
     "checkAvailability": "Vérifier la Disponibilité",
-    "whatsappMessage": "Bonjour Emma! Je suis intéressé par la réservation de {accommodation} du {checkIn} au {checkOut} pour {guests} personnes ({nights} nuits). Total: €{totalPrice}"
+    "whatsappMessage": "Bonjour Emma! Je suis intéressé par la réservation de {accommodation} du {checkIn} au {checkOut} pour {guests} personnes et {pets} animaux ({nights} nuits). Total: €{totalPrice}",
+    "priceBreakdown": "Détail des prix",
+    "weekdayNights": "nuits en semaine",
+    "weekendNights": "nuits de week-end",
+    "highSeasonNights": "nuits haute saison",
+    "petsFee": "Animaux",
+    "cleaningFee": "Nettoyage",
+    "accommodation_total": "Hébergement",
+    "priceIndicator": {
+      "weekday": "Semaine",
+      "weekend": "Week-end",
+      "highSeason": "Haute Saison"
+    }
   },
   "cta": {
     "title": "Prêt pour Votre Évasion?",

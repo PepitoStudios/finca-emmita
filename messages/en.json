@@ -230,6 +230,10 @@
     "guests": "Guests",
     "guest": "Guest",
     "guestsPlural": "Guests",
+    "pets": "Pets",
+    "pet": "Pet",
+    "petsPlural": "pets",
+    "selectDateRange": "Select date range",
     "from": "From",
     "perNight": "/night",
     "nights": "nights",
@@ -240,7 +244,19 @@
     "selectDates": "Select Dates",
     "orContact": "Or contact Emma directly",
     "checkAvailability": "Check Availability",
-    "whatsappMessage": "Hello Emma! I'm interested in booking {accommodation} from {checkIn} to {checkOut} for {guests} guests ({nights} nights). Total: €{totalPrice}"
+    "whatsappMessage": "Hello Emma! I'm interested in booking {accommodation} from {checkIn} to {checkOut} for {guests} guests and {pets} pets ({nights} nights). Total: €{totalPrice}",
+    "priceBreakdown": "Price breakdown",
+    "weekdayNights": "weekday nights",
+    "weekendNights": "weekend nights",
+    "highSeasonNights": "high season nights",
+    "petsFee": "Pets",
+    "cleaningFee": "Cleaning",
+    "accommodation_total": "Accommodation",
+    "priceIndicator": {
+      "weekday": "Weekday",
+      "weekend": "Weekend",
+      "highSeason": "High Season"
+    }
   },
   "cta": {
     "title": "Ready for Your Escape?",
